@@ -74,8 +74,18 @@ const EventDetails = () => {
               bg={cardBgColor}
               transition="transform 0.2s ease-in-out"
               _hover={{ transform: 'scale(1.03)', boxShadow: 'xl' }}
+              overflow="hidden"
             >
-              <Image src={event.image} alt={event.title} borderRadius="md" mb={4} />
+              <Image 
+                src={event.image} 
+                alt={event.title} 
+                borderRadius="md" 
+                mb={4} 
+                objectFit="cover" 
+                width="100%" 
+                height="200px" 
+                _hover={{ transform: 'scale(1.05)', transition: 'transform 0.3s ease-in-out' }}
+              />
               <Heading as="h3" size="lg" color={headingColor}>
                 {event.title}
               </Heading>
@@ -91,13 +101,21 @@ const EventDetails = () => {
       </Box>
 
       {selectedEvent && (
-        <Modal isOpen={isOpen} onClose={handleClose}>
+        <Modal isOpen={isOpen} onClose={handleClose} size="xl">
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>{selectedEvent.title}</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <Image src={selectedEvent.image} alt={selectedEvent.title} borderRadius="md" mb={4} />
+              <Image 
+                src={selectedEvent.image} 
+                alt={selectedEvent.title} 
+                borderRadius="md" 
+                mb={4} 
+                objectFit="cover" 
+                width="100%" 
+                height="400px"
+              />
               <Text fontWeight="bold">Time:</Text> {selectedEvent.time}
               <Text fontWeight="bold">Date:</Text> {selectedEvent.date}
               <Text fontWeight="bold">Place:</Text> {selectedEvent.place}

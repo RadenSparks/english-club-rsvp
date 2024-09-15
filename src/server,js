@@ -1,0 +1,39 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+
+// MongoDB connection
+mongoose.connect('mongodb://localhost:27017/rsvp', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.log(err));
+
+// Define the RSVP schema
+const rsvpSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  phone: String,
+  event: String,
+  comments: String,
+});
+
+const RSVP = mongoose.model('RSVP', rsvpSchema);
+
+// POST endpoint to handle RSVP submissions
+app.post('/api/rsvp', async (req, res) => {
+  try {
+    const { name, email, phone, event, comments } = req.body;
+    const newRSVP = new RSVP({ name, email, phone, event, comments });
+    await newRSVP.save();
+    res.status(201).json({ message: 'RSVP saved successfully' });
+  } catch (err) {
+    res.status(500).json({ error: 'An error occurred while saving RSVP' });
+  }
+});
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

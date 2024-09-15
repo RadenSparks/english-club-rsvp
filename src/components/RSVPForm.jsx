@@ -1,24 +1,29 @@
 import React, { useState } from 'react';
-import { Container, Box, Heading, Text, FormControl, FormLabel, Input, Textarea, Button, Stack, useToast } from '@chakra-ui/react';
+import { Container, Box, Heading, Text, FormControl, FormLabel, Input, Textarea, Button, Stack, useToast, Select } from '@chakra-ui/react';
+import axios from 'axios'; // Import axios for making HTTP requests
 
 const RSVPForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [preferredDate, setPreferredDate] = useState('');
+  const [event, setEvent] = useState('');
   const [comments, setComments] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const toast = useToast();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (name && email && phone && preferredDate) {
+    if (name && email && phone && event) {
       setLoading(true);
-      // Simulate an API call
-      setTimeout(() => {
-        setLoading(false);
-        setMessage('');
+      try {
+        await axios.post('http://localhost:5000/api/rsvp', {
+          name,
+          email,
+          phone,
+          event,
+          comments
+        });
         toast({
           title: 'RSVP successful!',
           description: "Thank you for your RSVP! We look forward to seeing you.",
@@ -30,9 +35,21 @@ const RSVPForm = () => {
         setName('');
         setEmail('');
         setPhone('');
-        setPreferredDate('');
+        setEvent('');
         setComments('');
-      }, 2000);
+        setMessage('');
+      } catch (error) {
+        toast({
+          title: 'RSVP failed',
+          description: "There was an error submitting your RSVP. Please try again.",
+          status: 'error',
+          duration: 4000,
+          isClosable: true,
+          position: 'top',
+        });
+      } finally {
+        setLoading(false);
+      }
     } else {
       setMessage('Please fill in all required fields.');
     }
@@ -88,14 +105,18 @@ const RSVPForm = () => {
                 />
               </Box>
               <Box>
-                <FormLabel fontSize="lg" color="gray.700">Preferred Event Date</FormLabel>
-                <Input 
-                  type="date"
-                  value={preferredDate}
-                  onChange={(e) => setPreferredDate(e.target.value)}
+                <FormLabel fontSize="lg" color="gray.700">Event</FormLabel>
+                <Select
+                  value={event}
+                  onChange={(e) => setEvent(e.target.value)}
+                  placeholder="Select Event"
                   size="lg"
                   focusBorderColor="teal.500"
-                />
+                >
+                  <option value="1st">1st Event</option>
+                  <option value="2nd">2nd Event</option>
+                  <option value="both">Both Events</option>
+                </Select>
               </Box>
               <Box>
                 <FormLabel fontSize="lg" color="gray.700">Comments</FormLabel>
