@@ -5,15 +5,15 @@ const ChatBot = () => {
     // Function to load the external script
     const loadScript = () => {
       const script = document.createElement('script');
-      script.src = 'https://app.artibot.ai/loader.js';
-      script.async = true;
       script.type = 'text/javascript';
+      script.async = true;
+      script.src = 'https://app.artibot.ai/loader.js';
       script.onload = () => {
         if (window.ArtiBot) {
-          new window.ArtiBot({ i: "760fc770-e2a9-4001-90ef-7bb0821b01a1" });
+          new window.ArtiBot({ i: "8129ffa5-08d8-475f-80a1-46b032cd2ac8" });
         }
       };
-      document.body.appendChild(script);
+      document.head.appendChild(script);
     };
 
     loadScript();
@@ -22,7 +22,7 @@ const ChatBot = () => {
     return () => {
       const existingScript = document.querySelector('script[src="https://app.artibot.ai/loader.js"]');
       if (existingScript) {
-        document.body.removeChild(existingScript);
+        document.head.removeChild(existingScript);
       }
     };
   }, []);

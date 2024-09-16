@@ -1,17 +1,16 @@
 import React, { Suspense } from 'react';
-import { Box, Heading } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { Helmet } from 'react-helmet';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
-import IntroducingUs from './components/IntroducingUs';
-import EventDetails from './components/EventDetails';
+import IntroducingEvents from './components/IntroducingEvents'; // Updated to the combined component
 import RSVPForm from './components/RSVPForm';
 import AboutUs from './components/AboutUs';
 import Footer from './components/Footer';
 import { motion } from 'framer-motion'; // For animations
 
 // Lazy loaded components
-const ImageGallery = React.lazy(() => import('./components/ImageGallery')); // Updated to ImageGallery
+const ImageGallery = React.lazy(() => import('./components/ImageGallery'));
 const ChatBot = React.lazy(() => import('./components/ChatBot'));
 const MapPreview = React.lazy(() => import('./components/MapPreview'));
 
@@ -29,7 +28,7 @@ const LandingPage = () => {
       <Box
         bgGradient="linear(to-r, teal.500, green.500)"
         minH="100vh"
-        fontFamily="'Montserrat', sans-serif" // Update to Montserrat
+        fontFamily="'Montserrat', sans-serif"
         style={{ scrollBehavior: 'smooth' }}
         display="flex"
         flexDirection="column"
@@ -46,18 +45,7 @@ const LandingPage = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <IntroducingUs />
-          </MotionBox>
-
-          <MotionBox
-            id="events"
-            py={{ base: 8, md: 16 }}
-            textAlign="center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <EventDetails />
+            <IntroducingEvents />
           </MotionBox>
 
           <MotionBox
@@ -67,7 +55,7 @@ const LandingPage = () => {
             bg="gray.50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
             <Suspense fallback={<div>Loading gallery...</div>}>
               <ImageGallery />
@@ -80,7 +68,7 @@ const LandingPage = () => {
             textAlign="center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
           >
             <Suspense fallback={<div>Loading map...</div>}>
               <Box aria-label="Event location map">
@@ -95,7 +83,7 @@ const LandingPage = () => {
             textAlign="center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
           >
             <RSVPForm />
           </MotionBox>
@@ -106,7 +94,7 @@ const LandingPage = () => {
             textAlign="center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.5 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
           >
             <AboutUs />
           </MotionBox>

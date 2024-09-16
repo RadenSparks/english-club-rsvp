@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Stack, Heading, Text, Button, Image, IconButton } from '@chakra-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 
@@ -10,14 +10,31 @@ const HeroSection = () => {
   ];
   
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [fade, setFade] = useState(true);
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setFade(false);
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setFade(true);
+    }, 600); // Match this duration with the CSS transition duration
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setFade(false);
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+      setFade(true);
+    }, 600);
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval); // Cleanup the interval on component unmount
+  }, []);
 
   return (
     <Box position="relative" h="70vh" overflow="hidden" boxShadow="lg">
@@ -30,7 +47,8 @@ const HeroSection = () => {
         position="absolute"
         top="0"
         left="0"
-        transition="all 0.6s ease-in-out" // Smooth transition for image change
+        transition="opacity 0.6s ease-in-out" // Smooth transition for image change
+        opacity={fade ? 1 : 0} // Control opacity based on fade state
         loading="lazy" // Added lazy loading
       />
       {/* Darker overlay for better text contrast */}
