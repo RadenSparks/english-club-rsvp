@@ -2,13 +2,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const dotenv = require('dotenv');
+const { body, validationResult } = require('express-validator');
+
+dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/rsvp', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/rsvp', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
@@ -24,13 +28,25 @@ const rsvpSchema = new mongoose.Schema({
 const RSVP = mongoose.model('RSVP', rsvpSchema);
 
 // POST endpoint to handle RSVP submissions
-app.post('/api/rsvp', async (req, res) => {
+app.post('/api/rsvp', [
+  body('name').notEmpty().withMessage('Name is required'),
+  body('email').isEmail().withMessage('Valid email is required'),
+  body('phone').optional().isString(),
+  body('event').notEmpty().withMessage('Event selection is required'),
+  body('comments').optional().isString(),
+], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   try {
     const { name, email, phone, event, comments } = req.body;
     const newRSVP = new RSVP({ name, email, phone, event, comments });
     await newRSVP.save();
     res.status(201).json({ message: 'RSVP saved successfully' });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ error: 'An error occurred while saving RSVP' });
   }
 });
