@@ -1,10 +1,28 @@
 import React, { useState } from 'react';
-import { Container, Box, Heading, VStack, Text, useColorModeValue, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Image, Spinner, Divider } from '@chakra-ui/react';
+import {
+  Container,
+  Box,
+  Heading,
+  VStack,
+  Text,
+  useColorModeValue,
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  Image,
+  Spinner,
+  Divider,
+} from '@chakra-ui/react';
 
 const IntroducingEvents = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true); // Simulating loading state
 
   const handleOpen = (event) => {
     setSelectedEvent(event);
@@ -29,7 +47,7 @@ const IntroducingEvents = () => {
       place: "Community Center",
       topic: "Language Games and Activities",
       moreDetails: "Detailed description about the first event.",
-      image: "https://via.placeholder.com/600x400?text=First+Event"
+      image: "https://images.unsplash.com/photo-1521747116042-5a810fda9664?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fG1vdW50YWluJTIwZXZlbnR8ZW58MHx8fHwxNjYzMjk2NDQ5&ixlib=rb-1.2.1&q=80&w=600"
     },
     {
       title: "Second Event",
@@ -39,9 +57,17 @@ const IntroducingEvents = () => {
       place: "City Hall",
       topic: "Discussion and Debate",
       moreDetails: "Detailed description about the second event.",
-      image: "https://via.placeholder.com/600x400?text=Second+Event"
+      image: "https://images.unsplash.com/photo-1521747116042-5a810fda9664?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDIyfHxjY2F0ZWdvcnklMjBldmVudHxlbnwwfHx8fDE2NjMyOTY0NDk&ixlib=rb-1.2.1&q=80&w=600"
     }
   ];
+
+  // Simulate loading
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   if (loading) {
     return (
@@ -53,9 +79,9 @@ const IntroducingEvents = () => {
 
   return (
     <Container maxW="container.md" py={12} centerContent>
-      <Box bg="gray.50" p={8} borderRadius="lg" boxShadow="xl">
+      <Box bg={bgColor} p={8} borderRadius="lg" boxShadow="xl">
         <VStack spacing={6} textAlign="center">
-          <Heading as="h2" size="2xl" color="teal.600" fontWeight="bold">
+          <Heading as="h2" size="2xl" color={headingColor} fontWeight="bold">
             Introducing Our Events
           </Heading>
           <Divider borderColor="teal.300" />
@@ -83,6 +109,7 @@ const IntroducingEvents = () => {
                   objectFit="cover" 
                   width="100%" 
                   height="200px" 
+                  fallbackSrc="https://via.placeholder.com/600x400?text=Image+Not+Available"
                   _hover={{ transform: 'scale(1.05)', transition: 'transform 0.3s ease-in-out' }}
                 />
                 <Heading as="h3" size="lg" color={headingColor}>
@@ -115,6 +142,7 @@ const IntroducingEvents = () => {
                 objectFit="cover" 
                 width="100%" 
                 height="400px"
+                fallbackSrc="https://via.placeholder.com/600x400?text=Image+Not+Available"
               />
               <Text fontWeight="bold">Time:</Text> {selectedEvent.time}
               <Text fontWeight="bold">Date:</Text> {selectedEvent.date}

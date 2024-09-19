@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Heading, Image, Grid } from '@chakra-ui/react';
+import { Box, Heading, Image, Grid, Spinner, } from '@chakra-ui/react';
 import ImageModal from './ImageModal'; // Ensure this is the correct path
 
 const images = [
@@ -14,6 +14,7 @@ const images = [
 const ImageGallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(true); // State for loading images
 
   const openModal = (imgSrc) => {
     setSelectedImage(imgSrc);
@@ -51,8 +52,15 @@ const ImageGallery = () => {
               alt={`Thumbnail ${index + 1}`}
               width="100%"
               height="auto"
-              objectFit="cover" // Ensures image covers the box
+              objectFit="cover"
+              onLoad={() => setLoading(false)} // Set loading to false on image load
+              onError={() => setLoading(false)} // Handle image load error
             />
+            {loading && (
+              <Box position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)">
+                <Spinner size="lg" color="teal.500" />
+              </Box>
+            )}
           </Box>
         ))}
       </Grid>

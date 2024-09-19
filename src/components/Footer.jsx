@@ -28,6 +28,8 @@ const Footer = () => {
           color={iconColor}
           _hover={{ color: iconHoverColor }}
           isRound
+          target="_blank" // Open in a new tab
+          rel="noopener noreferrer" // Security improvement
         />
         <IconButton 
           as="a" 
@@ -37,6 +39,8 @@ const Footer = () => {
           color={iconColor}
           _hover={{ color: iconHoverColor }}
           isRound
+          target="_blank"
+          rel="noopener noreferrer"
         />
         <IconButton 
           as="a" 
@@ -46,6 +50,8 @@ const Footer = () => {
           color={iconColor}
           _hover={{ color: iconHoverColor }}
           isRound
+          target="_blank"
+          rel="noopener noreferrer"
         />
         <IconButton 
           as="a" 
@@ -55,6 +61,8 @@ const Footer = () => {
           color={iconColor}
           _hover={{ color: iconHoverColor }}
           isRound
+          target="_blank"
+          rel="noopener noreferrer"
         />
       </HStack>
       <Text fontSize={fontSize} fontWeight="medium">

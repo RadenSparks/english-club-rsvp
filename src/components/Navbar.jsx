@@ -1,13 +1,19 @@
-import React from 'react';
-import { Flex, Box, HStack, Button, IconButton } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Flex, Box, HStack, Button, IconButton, Collapse, VStack } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const scrollToSection = (section) => {
     const element = document.getElementById(section);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -60,11 +66,45 @@ const Navbar = () => {
         icon={<HamburgerIcon />}
         size="lg"
         display={{ base: 'inline-flex', md: 'none' }}
-        onClick={() => console.log('Open Menu')}
+        onClick={toggleMenu}
         variant="ghost"
         color="white"
         _hover={{ bg: 'teal.600' }}
+        aria-expanded={isOpen}
+        aria-controls="mobile-menu"
       />
+
+      <Collapse in={isOpen} animateOpacity>
+        <VStack 
+          id="mobile-menu" 
+          spacing={4} 
+          bg="teal.500" 
+          p={4} 
+          position="absolute" 
+          top="60px" 
+          right="0" 
+          zIndex={10}
+          display={{ base: 'flex', md: 'none' }}
+        >
+          {['home', 'about', 'events', 'gallery', 'contact'].map((item) => (
+            <Button 
+              key={item} 
+              variant="link" 
+              color="white" 
+              fontSize="lg" 
+              fontWeight="medium"
+              onClick={() => {
+                scrollToSection(item);
+                setIsOpen(false); // Close menu after selection
+              }} 
+              _hover={{ textDecoration: 'underline', color: 'gray.200' }}
+              _active={{ color: 'gray.300' }}
+            >
+              {item.charAt(0).toUpperCase() + item.slice(1)}
+            </Button>
+          ))}
+        </VStack>
+      </Collapse>
     </Flex>
   );
 };

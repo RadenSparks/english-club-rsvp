@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Heading, Text, Link, Image, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Button } from '@chakra-ui/react';
+import { Box, Heading, Text, Link, Image, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, } from '@chakra-ui/react';
 
 const MapPreview = () => {
   const [isOpen, setIsOpen] = useState(false);
