@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Flex, Box, HStack, Button, IconButton, Collapse, VStack } from '@chakra-ui/react';
+import { Flex, Box, HStack, Button, IconButton, Collapse, VStack, Image } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 
 const Navbar = () => {
@@ -26,40 +26,42 @@ const Navbar = () => {
       align="center" 
       boxShadow="md"
       position="fixed"
-      w="100%"
-      top={0}
-      zIndex={10}
+      w="100%" 
+      top={0} 
+      zIndex={10} 
       fontFamily="'Montserrat', sans-serif"
     >
-      <Box 
-        fontWeight="bold" 
-        fontSize="2xl" 
-        color="white" 
-        letterSpacing="wide"
-      >
-        English Club
+      {/* Replace text with logo image */}
+      <Box>
+        <Image 
+          src="/path-to-your-logo.png" // Replace with your logo path or URL
+          alt="English Club Logo" 
+          boxSize="40px" // Adjust size as needed
+          objectFit="contain"
+        />
       </Box>
 
       <HStack 
-        as="nav" 
-        spacing={6} 
-        display={{ base: 'none', md: 'flex' }}
-      >
-        {['home', 'about', 'events', 'gallery', 'contact'].map((item) => (
-          <Button 
-            key={item} 
-            variant="link" 
-            color="white" 
-            fontSize="lg" 
-            fontWeight="medium"
-            onClick={() => scrollToSection(item)} 
-            _hover={{ textDecoration: 'underline', color: 'gray.200' }}
-            _active={{ color: 'gray.300' }}
-          >
-            {item.charAt(0).toUpperCase() + item.slice(1)}
-          </Button>
-        ))}
-      </HStack>
+  as="nav" 
+  spacing={6} 
+  display={{ base: 'none', md: 'flex' }}
+>
+  {['home', 'about', 'events', 'gallery', 'contact'].map((item) => (
+    <Button 
+      key={item} 
+      variant="link" 
+      color="white" 
+      fontSize="lg" 
+      fontWeight="medium"
+      onClick={() => scrollToSection(item)} 
+      _hover={{ textDecoration: 'underline', color: 'gray.200' }}
+      _active={{ color: 'gray.300' }}
+    >
+      {item.charAt(0).toUpperCase() + item.slice(1)}
+    </Button>
+  ))}
+</HStack>
+
 
       <IconButton
         aria-label="Open Menu"

@@ -18,6 +18,9 @@ import {
   Spinner,
   Divider,
 } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
+
+const MotionBox = motion(Box);
 
 const IntroducingEvents = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -78,87 +81,89 @@ const IntroducingEvents = () => {
   }
 
   return (
-    <Container maxW="container.md" py={12} centerContent>
-      <Box bg={bgColor} p={8} borderRadius="lg" boxShadow="xl">
-        <VStack spacing={6} textAlign="center">
-          <Heading as="h2" size="2xl" color={headingColor} fontWeight="bold">
-            Introducing Our Events
-          </Heading>
-          <Divider borderColor="teal.300" />
-          <Text fontSize="lg" color="gray.700" lineHeight="tall">
-            Welcome to the English Club! We are excited to announce our upcoming events designed to enhance your skills, make new friends, and enjoy engaging experiences. Check out our events below!
-          </Text>
-          <VStack spacing={6} align="stretch">
-            {events.map((event, index) => (
-              <Box
-                key={index}
-                p={4}
-                borderWidth="1px"
-                borderRadius="lg"
-                boxShadow="md"
-                bg={cardBgColor}
-                transition="transform 0.2s ease-in-out"
-                _hover={{ transform: 'scale(1.03)', boxShadow: 'xl' }}
-                overflow="hidden"
-              >
+    <MotionBox id="events" py={{ base: 8, md: 16 }} textAlign="center">
+      <Container maxW="container.md" py={12} centerContent>
+        <Box bg={bgColor} p={8} borderRadius="lg" boxShadow="xl">
+          <VStack spacing={6} textAlign="center">
+            <Heading as="h2" size="2xl" color={headingColor} fontWeight="bold">
+              Introducing Our Events
+            </Heading>
+            <Divider borderColor="teal.300" />
+            <Text fontSize="lg" color="gray.700" lineHeight="tall">
+              Welcome to the English Club! We are excited to announce our upcoming events designed to enhance your skills, make new friends, and enjoy engaging experiences. Check out our events below!
+            </Text>
+            <VStack spacing={6} align="stretch">
+              {events.map((event, index) => (
+                <Box
+                  key={index}
+                  p={4}
+                  borderWidth="1px"
+                  borderRadius="lg"
+                  boxShadow="md"
+                  bg={cardBgColor}
+                  transition="transform 0.2s ease-in-out"
+                  _hover={{ transform: 'scale(1.03)', boxShadow: 'xl' }}
+                  overflow="hidden"
+                >
+                  <Image 
+                    src={event.image} 
+                    alt={event.title} 
+                    borderRadius="md" 
+                    mb={4} 
+                    objectFit="cover" 
+                    width="100%" 
+                    height="200px" 
+                    fallbackSrc="https://via.placeholder.com/600x400?text=Image+Not+Available"
+                    _hover={{ transform: 'scale(1.05)', transition: 'transform 0.3s ease-in-out' }}
+                  />
+                  <Heading as="h3" size="lg" color={headingColor}>
+                    {event.title}
+                  </Heading>
+                  <Text fontWeight="bold">Time: {event.time}</Text>
+                  <Text fontWeight="bold">Date: {event.date}</Text>
+                  <Text mt={2}>{event.description}</Text>
+                  <Button mt={4} colorScheme="teal" onClick={() => handleOpen(event)}>
+                    More Details
+                  </Button>
+                </Box>
+              ))}
+            </VStack>
+          </VStack>
+        </Box>
+
+        {selectedEvent && (
+          <Modal isOpen={isOpen} onClose={handleClose} size="xl">
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>{selectedEvent.title}</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
                 <Image 
-                  src={event.image} 
-                  alt={event.title} 
+                  src={selectedEvent.image} 
+                  alt={selectedEvent.title} 
                   borderRadius="md" 
                   mb={4} 
                   objectFit="cover" 
                   width="100%" 
-                  height="200px" 
+                  height="400px"
                   fallbackSrc="https://via.placeholder.com/600x400?text=Image+Not+Available"
-                  _hover={{ transform: 'scale(1.05)', transition: 'transform 0.3s ease-in-out' }}
                 />
-                <Heading as="h3" size="lg" color={headingColor}>
-                  {event.title}
-                </Heading>
-                <Text fontWeight="bold">Time: {event.time}</Text>
-                <Text fontWeight="bold">Date: {event.date}</Text>
-                <Text mt={2}>{event.description}</Text>
-                <Button mt={4} colorScheme="teal" onClick={() => handleOpen(event)}>
-                  More Details
+                <Text fontWeight="bold">Time:</Text> {selectedEvent.time}
+                <Text fontWeight="bold">Date:</Text> {selectedEvent.date}
+                <Text fontWeight="bold">Place:</Text> {selectedEvent.place}
+                <Text fontWeight="bold">Topic:</Text> {selectedEvent.topic}
+                <Text mt={4}>{selectedEvent.moreDetails}</Text>
+              </ModalBody>
+              <ModalFooter>
+                <Button colorScheme="blue" mr={3} onClick={handleClose}>
+                  Close
                 </Button>
-              </Box>
-            ))}
-          </VStack>
-        </VStack>
-      </Box>
-
-      {selectedEvent && (
-        <Modal isOpen={isOpen} onClose={handleClose} size="xl">
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>{selectedEvent.title}</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <Image 
-                src={selectedEvent.image} 
-                alt={selectedEvent.title} 
-                borderRadius="md" 
-                mb={4} 
-                objectFit="cover" 
-                width="100%" 
-                height="400px"
-                fallbackSrc="https://via.placeholder.com/600x400?text=Image+Not+Available"
-              />
-              <Text fontWeight="bold">Time:</Text> {selectedEvent.time}
-              <Text fontWeight="bold">Date:</Text> {selectedEvent.date}
-              <Text fontWeight="bold">Place:</Text> {selectedEvent.place}
-              <Text fontWeight="bold">Topic:</Text> {selectedEvent.topic}
-              <Text mt={4}>{selectedEvent.moreDetails}</Text>
-            </ModalBody>
-            <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={handleClose}>
-                Close
-              </Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      )}
-    </Container>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+        )}
+      </Container>
+    </MotionBox>
   );
 };
 

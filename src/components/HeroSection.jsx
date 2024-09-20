@@ -2,13 +2,14 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Box, Stack, Heading, Text, Button, Image, IconButton } from '@chakra-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 
+// Importing images from local assets
+const images = [
+  require('../assets/img/hero-1.jpg'), // Replace with your actual image file names
+  require('../assets/img/hero-2.jpg'),
+  require('../assets/img/hero-3.jpg'),
+];
+
 const HeroSection = () => {
-  const images = [
-    'https://source.unsplash.com/1600x900/?event,people', // Stock image of an event
-    'https://source.unsplash.com/1600x900/?language,classroom', // Stock image of a classroom or language event
-    'https://source.unsplash.com/1600x900/?festival,crowd', // Stock image of a festival or crowd
-  ];
-  
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fade, setFade] = useState(true);
 
@@ -17,8 +18,8 @@ const HeroSection = () => {
     setTimeout(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
       setFade(true);
-    }, 600); // Match this duration with the CSS transition duration
-  }, [images.length]);
+    }, 600);
+  }, []);
 
   const prevSlide = useCallback(() => {
     setFade(false);
@@ -26,12 +27,12 @@ const HeroSection = () => {
       setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
       setFade(true);
     }, 600);
-  }, [images.length]);
+  }, []);
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-    return () => clearInterval(interval); // Cleanup the interval on component unmount
-  }, [nextSlide]); // Include nextSlide in the dependency array
+    const interval = setInterval(nextSlide, 5000);
+    return () => clearInterval(interval);
+  }, [nextSlide]);
 
   return (
     <Box position="relative" h="70vh" overflow="hidden" boxShadow="lg">
@@ -44,11 +45,10 @@ const HeroSection = () => {
         position="absolute"
         top="0"
         left="0"
-        transition="opacity 0.6s ease-in-out" // Smooth transition for image change
-        opacity={fade ? 1 : 0} // Control opacity based on fade state
-        loading="lazy" // Added lazy loading
+        transition="opacity 0.6s ease-in-out"
+        opacity={fade ? 1 : 0}
+        loading="lazy"
       />
-      {/* Darker overlay for better text contrast */}
       <Box
         position="absolute"
         top="0"
@@ -105,7 +105,6 @@ const HeroSection = () => {
         _hover={{ bg: 'rgba(0, 0, 0, 0.2)' }}
       />
       <Box aria-live="polite" style={{ position: 'absolute', top: '10px', left: '10px' }}>
-        <Text color="white">Current Slide: {currentIndex + 1}</Text>
       </Box>
     </Box>
   );

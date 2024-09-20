@@ -17,7 +17,7 @@ const MapPreview = () => {
       boxShadow="xl"
       textAlign="center"
       mx={{ base: 4, md: 8 }}
-    >
+    > 
       <Heading as="h2" size="lg" mb={4} color="teal.600">
         Event Location
       </Heading>
