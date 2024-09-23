@@ -50,7 +50,14 @@ const HeroSection = () => {
   const scrollToSection = (section) => {
     const element = document.getElementById(section);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const headerOffset = 70; // Adjust based on your header height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 50; // Adjust the additional offset here
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -97,7 +104,7 @@ const HeroSection = () => {
             colorScheme="teal"
             size="lg"
             px={10}
-            onClick={() => scrollToSection('rsvp-form')} // Change to the ID of your RSVP form
+            onClick={() => scrollToSection('rsvp-form')}
             _hover={{ bg: 'teal.700' }}
             _focus={{ boxShadow: '0 0 0 3px rgba(66, 153, 225, 0.6)' }}
           >

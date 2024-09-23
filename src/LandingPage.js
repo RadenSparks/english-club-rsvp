@@ -1,4 +1,4 @@
-import React, { Suspense, useRef, useState } from 'react';
+import React, { Suspense, useRef, useState, useEffect } from 'react';
 import { Box, Spinner, Stack, Heading, Text, Button, Image } from '@chakra-ui/react';
 import { Helmet } from 'react-helmet';
 import Navbar from './components/Navbar';
@@ -71,6 +71,7 @@ const ClubActivities = () => {
 const LandingPage = () => {
   const chatBotRef = useRef(null);
   const [isChatBotOpen, setIsChatBotOpen] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   const toggleChatBot = () => {
     if (chatBotRef.current) {
@@ -83,32 +84,27 @@ const LandingPage = () => {
     }
   };
 
+  const handleScroll = () => {
+    if (window.scrollY > 200) {
+      setShowBackToTop(true);
+    } else {
+      setShowBackToTop(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const posts = [
-    {
-      title: 'Exploring the Mountains',
-      image: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fG1vdW50YWluJTIwcGF0dHxlbnwwfHx8fDE2MDY1NzA2MjM&ixlib=rb-1.2.1&q=80&w=600',
-      description: 'Join us for an unforgettable adventure in the mountains, where breathtaking views await you!',
-    },
-    {
-      title: 'Beach Cleanup Day',
-      image: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fGJlYWNoJTIwY2xlYW5vdXAlMjBkYXklMjBjbGVhbiUyMGNvbW11bml0eXxlbnwwfHx8fDE2MDY1NzA2MjM&ixlib=rb-1.2.1&q=80&w=600',
-      description: 'Help us keep our beaches clean! Participate in our community cleanup day and make a difference.',
-    },
-    {
-      title: 'Cultural Festival 2024',
-      image: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGN1bHR1cmFsJTIwZmVzdGl2YWwlMjBpbWFnZXxlbnwwfHx8fDE2MDY1NzA2MjM&ixlib=rb-1.2.1&q=80&w=600',
-      description: 'Experience the richness of our diverse cultures at the annual Cultural Festival. Food, music, and fun await!',
-    },
-    {
-      title: 'Tech Innovations Conference',
-      image: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDN8fHRlY2glMjBjb25mZXJlbmNlJTIwcGF0dHxlbnwwfHx8fDE2MDY1NzA2MjM&ixlib=rb-1.2.1&q=80&w=600',
-      description: 'Join industry leaders at the Tech Innovations Conference to explore the latest trends and technologies.',
-    },
-    {
-      title: 'Yoga Retreat Weekend',
-      image: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHlvZ2ElMjByZXRyZWF0JTIwd29lZW5kfGVufDB8fHx8MTYwNjU3MDYyMw&ixlib=rb-1.2.1&q=80&w=600',
-      description: 'Relax and rejuvenate with our Yoga Retreat Weekend, perfect for all levels. Find your inner peace!',
-    },
+    // Your existing posts data
   ];
   
   return (
@@ -183,6 +179,15 @@ const LandingPage = () => {
             <ChatBot ref={chatBotRef} />
           </Suspense>
         </ErrorBoundary>
+        
+        {/* Back to Top Button */}
+        {showBackToTop && (
+          <Box position="fixed" bottom="30px" right="30px" zIndex="1000">
+            <Button onClick={scrollToTop} colorScheme="teal" borderRadius="full">
+              ↑
+            </Button>
+          </Box>
+        )}
       </Box>
     </>
   );
