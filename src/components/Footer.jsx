@@ -1,8 +1,10 @@
 import React from 'react';
 import { Box, Text, useBreakpointValue, HStack, IconButton, useColorModeValue } from '@chakra-ui/react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 
 const Footer = () => {
+  const { t } = useTranslation(); // Initialize translation
   // Responsive font size
   const fontSize = useBreakpointValue({ base: 'sm', md: 'md' });
 
@@ -23,20 +25,20 @@ const Footer = () => {
         <IconButton 
           as="a" 
           href="https://www.facebook.com/yourpage" 
-          aria-label="Facebook" 
+          aria-label={t('footer.facebook')} // Localized aria-label
           icon={<FaFacebookF />} 
-          color={iconColor}
+          color={iconColor} // Use iconColor here
           _hover={{ color: iconHoverColor }}
           isRound
-          target="_blank" // Open in a new tab
-          rel="noopener noreferrer" // Security improvement
+          target="_blank" 
+          rel="noopener noreferrer"
         />
         <IconButton 
           as="a" 
           href="https://twitter.com/yourprofile" 
-          aria-label="Twitter" 
+          aria-label={t('footer.twitter')} // Localized aria-label
           icon={<FaTwitter />} 
-          color={iconColor}
+          color={iconColor} // Use iconColor here
           _hover={{ color: iconHoverColor }}
           isRound
           target="_blank"
@@ -45,9 +47,9 @@ const Footer = () => {
         <IconButton 
           as="a" 
           href="https://www.instagram.com/yourprofile" 
-          aria-label="Instagram" 
+          aria-label={t('footer.instagram')} // Localized aria-label
           icon={<FaInstagram />} 
-          color={iconColor}
+          color={iconColor} // Use iconColor here
           _hover={{ color: iconHoverColor }}
           isRound
           target="_blank"
@@ -56,9 +58,9 @@ const Footer = () => {
         <IconButton 
           as="a" 
           href="https://www.linkedin.com/in/yourprofile" 
-          aria-label="LinkedIn" 
+          aria-label={t('footer.linkedin')} // Localized aria-label
           icon={<FaLinkedinIn />} 
-          color={iconColor}
+          color={iconColor} // Use iconColor here
           _hover={{ color: iconHoverColor }}
           isRound
           target="_blank"
@@ -66,7 +68,7 @@ const Footer = () => {
         />
       </HStack>
       <Text fontSize={fontSize} fontWeight="medium">
-        &copy; 2024 English Club. All Rights Reserved.
+        &copy; {new Date().getFullYear()} {t('footer.copy_right')} {/* Localized copyright text */}
       </Text>
     </Box>
   );

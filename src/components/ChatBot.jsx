@@ -10,18 +10,20 @@ const ChatBot = forwardRef((props, ref) => {
       script.async = true;
       script.src = 'https://app.artibot.ai/loader.js';
       document.head.appendChild(script);
-      
+
       script.onload = () => {
-        new window.ArtiBot({
-          i: "760fc770-e2a9-4001-90ef-7bb0821b01a1",
-          em: {
-            id: '1726707834850',
-            w: '400',
-            h: '400',
-            sh: true,
-            tb: false,
-          },
-        });
+        if (window.ArtiBot) {
+          new window.ArtiBot({
+            i: '760fc770-e2a9-4001-90ef-7bb0821b01a1',
+            em: {
+              id: '1726707834850',
+              w: '400',
+              h: '400',
+              sh: true,
+              tb: false,
+            },
+          });
+        }
       };
 
       script.onerror = () => {
@@ -31,10 +33,15 @@ const ChatBot = forwardRef((props, ref) => {
 
     loadScript();
 
+    // Cleanup: Remove the script and any ArtiBot instance when the component unmounts
     return () => {
       const existingScript = document.querySelector('script[src="https://app.artibot.ai/loader.js"]');
       if (existingScript) {
         document.head.removeChild(existingScript);
+      }
+      const chatbotElement = document.getElementById('artibot-1726707834850');
+      if (chatbotElement) {
+        chatbotElement.innerHTML = ''; // Clear the chatbot content
       }
     };
   }, []);

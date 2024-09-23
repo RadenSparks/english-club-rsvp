@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Flex, Box, HStack, Button, IconButton, Collapse, VStack, Image } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
+import LanguageSwitcher from './LanguageSwitcher'; // Import the LanguageSwitcher component
+import { useTranslation } from 'react-i18next'; // Import the useTranslation hook
 
 const Navbar = () => {
+  const { t } = useTranslation(); // Initialize the translation function
   const [isOpen, setIsOpen] = useState(false);
 
   const scrollToSection = (section) => {
@@ -31,40 +34,40 @@ const Navbar = () => {
       zIndex={10} 
       fontFamily="'Montserrat', sans-serif"
     >
-      {/* Replace text with logo image */}
+      {/* Logo Section */}
       <Box>
         <Image 
           src="/path-to-your-logo.png" // Replace with your logo path or URL
-          alt="English Club Logo" 
+          alt={t('nav.logoAlt')} // Use a localized alt text for the logo
           boxSize="40px" // Adjust size as needed
           objectFit="contain"
         />
       </Box>
 
-      <HStack 
-  as="nav" 
-  spacing={6} 
-  display={{ base: 'none', md: 'flex' }}
->
-  {['home', 'about', 'events', 'gallery', 'contact'].map((item) => (
-    <Button 
-      key={item} 
-      variant="link" 
-      color="white" 
-      fontSize="lg" 
-      fontWeight="medium"
-      onClick={() => scrollToSection(item)} 
-      _hover={{ textDecoration: 'underline', color: 'gray.200' }}
-      _active={{ color: 'gray.300' }}
-    >
-      {item.charAt(0).toUpperCase() + item.slice(1)}
-    </Button>
-  ))}
-</HStack>
+      {/* Desktop Navigation Links */}
+      <HStack as="nav" spacing={6} display={{ base: 'none', md: 'flex' }}>
+        {['home', 'about', 'events', 'gallery', 'contact'].map((item) => (
+          <Button 
+            key={item} 
+            variant="link" 
+            color="white" 
+            fontSize="lg" 
+            fontWeight="medium"
+            onClick={() => scrollToSection(item)} 
+            _hover={{ textDecoration: 'underline', color: 'gray.200' }}
+            _active={{ color: 'gray.300' }}
+          >
+            {t(`nav.${item}`)} {/* Use translation here */}
+          </Button>
+        ))}
 
+        {/* Language Switcher on the right */}
+        <LanguageSwitcher />
+      </HStack>
 
+      {/* Mobile Hamburger Menu Icon */}
       <IconButton
-        aria-label="Open Menu"
+        aria-label={t('nav.openMenu')} // Localized aria-label
         icon={<HamburgerIcon />}
         size="lg"
         display={{ base: 'inline-flex', md: 'none' }}
@@ -76,6 +79,7 @@ const Navbar = () => {
         aria-controls="mobile-menu"
       />
 
+      {/* Mobile Menu */}
       <Collapse in={isOpen} animateOpacity>
         <VStack 
           id="mobile-menu" 
@@ -102,9 +106,12 @@ const Navbar = () => {
               _hover={{ textDecoration: 'underline', color: 'gray.200' }}
               _active={{ color: 'gray.300' }}
             >
-              {item.charAt(0).toUpperCase() + item.slice(1)}
+              {t(`nav.${item}`)} {/* Use translation here */}
             </Button>
           ))}
+
+          {/* Language Switcher in the mobile menu */}
+          <LanguageSwitcher />
         </VStack>
       </Collapse>
     </Flex>

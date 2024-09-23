@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Container, Box, Heading, Text, FormControl, FormLabel, Input, Button, Stack, useToast } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 
 const RSVPForm = ({ onRSVP }) => {
+  const { t } = useTranslation();
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
   const toast = useToast();
@@ -9,15 +11,13 @@ const RSVPForm = ({ onRSVP }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
-    // Trim whitespace from name
+    
     const trimmedName = name.trim();
 
-    // Validation checks
     if (!trimmedName) {
       toast({
         title: 'Validation Error',
-        description: 'Name is required.',
+        description: t('rsvp.validationError'),
         status: 'error',
         duration: 4000,
         isClosable: true,
@@ -28,26 +28,24 @@ const RSVPForm = ({ onRSVP }) => {
     }
 
     try {
-      // Log the form data (or send it to a server)
       console.log({ name: trimmedName });
 
       toast({
         title: 'RSVP successful!',
-        description: "Thank you for your RSVP! We look forward to seeing you.",
+        description: t('rsvp.success'),
         status: 'success',
         duration: 4000,
         isClosable: true,
         position: 'top',
       });
 
-      // Reset form fields
       setName('');
-      onRSVP(); // Open the chatbot
+      onRSVP(); // Trigger additional actions, like opening a chatbot
     } catch (error) {
       console.error('Error submitting RSVP:', error);
       toast({
         title: 'Submission Error',
-        description: 'There was an error submitting your RSVP. Please try again later.',
+        description: t('rsvp.submissionError'),
         status: 'error',
         duration: 4000,
         isClosable: true,
@@ -62,20 +60,20 @@ const RSVPForm = ({ onRSVP }) => {
     <Container maxW="container.md" py={12} centerContent>
       <Box bg="gray.50" p={8} borderRadius="lg" boxShadow="xl" w="full">
         <Heading as="h2" size="xl" mb={6} color="teal.600" textAlign="center">
-          Are You Attending?
+          {t('rsvp.title')}
         </Heading>
         <Text mb={6} fontSize="lg" color="gray.600" textAlign="center">
-          Please fill out the form to let us know you're coming!
+          {t('rsvp.description')}
         </Text>
         <form onSubmit={handleSubmit}>
           <FormControl id="rsvp-form" isRequired>
             <Stack spacing={6}>
               <Box>
-                <FormLabel fontSize="lg" color="gray.700">Name</FormLabel>
+                <FormLabel fontSize="lg" color="gray.700">{t('rsvp.name')}</FormLabel>
                 <Input 
                   value={name}
                   onChange={(e) => setName(e.target.value)} 
-                  placeholder="Your Name" 
+                  placeholder={t('rsvp.name')}
                   size="lg"
                   focusBorderColor="teal.500"
                   _placeholder={{ color: 'gray.400' }}
@@ -92,7 +90,7 @@ const RSVPForm = ({ onRSVP }) => {
                 _focus={{ boxShadow: '0 0 0 3px rgba(66, 153, 225, 0.6)' }}
                 aria-label="Submit RSVP"
               >
-                Submit RSVP
+                {t('rsvp.submit')}
               </Button>
             </Stack>
           </FormControl>

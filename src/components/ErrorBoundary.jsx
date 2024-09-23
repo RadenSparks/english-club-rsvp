@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Box, Button, Heading, Text } from '@chakra-ui/react';
+import { withTranslation } from 'react-i18next'; // Import withTranslation
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -13,9 +14,15 @@ class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    // Log the error to an error reporting service
+    // Log the error to an error reporting service or console
     console.error("Uncaught error:", error, errorInfo);
+    this.logErrorToService(error, errorInfo);
   }
+
+  logErrorToService = (error, errorInfo) => {
+    // Simulate error logging (replace with an actual service like Sentry or a logging API)
+    console.log("Error logged to service:", { error, errorInfo });
+  };
 
   handleReset = () => {
     // Reset the error boundary state
@@ -23,13 +30,20 @@ class ErrorBoundary extends Component {
   };
 
   render() {
-    if (this.state.hasError) {
+    const { hasError } = this.state;
+    const { t, fallbackMessage, fallbackTitle } = this.props;
+
+    if (hasError) {
       // Fallback UI
       return (
         <Box textAlign="center" py={10} px={6}>
-          <Heading as="h2" size="xl" mb={4}>Something went wrong.</Heading>
-          <Text mb={4}>Please try again later.</Text>
-          <Button onClick={this.handleReset} colorScheme="teal">Try Again</Button>
+          <Heading as="h2" size="xl" mb={4} color="red.500">
+            {fallbackTitle ? t(fallbackTitle) : t('error.default_title')}
+          </Heading>
+          <Text mb={4}>
+            {fallbackMessage ? t(fallbackMessage) : t('error.default_message')}
+          </Text>
+          <Button onClick={this.handleReset} colorScheme="teal">{t('error.try_again')}</Button>
         </Box>
       );
     }
@@ -38,4 +52,5 @@ class ErrorBoundary extends Component {
   }
 }
 
-export default ErrorBoundary;
+// Wrap ErrorBoundary with translation capabilities
+export default withTranslation()(ErrorBoundary);

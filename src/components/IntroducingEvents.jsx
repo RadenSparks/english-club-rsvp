@@ -19,10 +19,12 @@ import {
   Divider,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next'; // Import the useTranslation hook
 
 const MotionBox = motion(Box);
 
 const IntroducingEvents = () => {
+  const { t } = useTranslation(); // Use the useTranslation hook for localization
   const [isOpen, setIsOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [loading, setLoading] = useState(true); // Simulating loading state
@@ -43,23 +45,23 @@ const IntroducingEvents = () => {
 
   const events = [
     {
-      title: "First Event",
-      time: "10:00 AM - 12:00 PM",
-      date: "September 22, 2024",
-      description: "Join us for our first English Club event filled with fun activities and learning!",
-      place: "Community Center",
-      topic: "Language Games and Activities",
-      moreDetails: "Detailed description about the first event.",
+      title: t('events.first_event_title'),
+      time: t('events.first_event_time'),
+      date: t('events.first_event_date'),
+      description: t('events.first_event_description'),
+      place: t('events.first_event_place'),
+      topic: t('events.first_event_topic'),
+      moreDetails: t('events.first_event_more_details'),
       image: "https://images.unsplash.com/photo-1521747116042-5a810fda9664?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fG1vdW50YWluJTIwZXZlbnR8ZW58MHx8fHwxNjYzMjk2NDQ5&ixlib=rb-1.2.1&q=80&w=600"
     },
     {
-      title: "Second Event",
-      time: "2:00 PM - 4:00 PM",
-      date: "September 29, 2024",
-      description: "Join us for our second event with exciting games and discussions!",
-      place: "City Hall",
-      topic: "Discussion and Debate",
-      moreDetails: "Detailed description about the second event.",
+      title: t('events.second_event_title'),
+      time: t('events.second_event_time'),
+      date: t('events.second_event_date'),
+      description: t('events.second_event_description'),
+      place: t('events.second_event_place'),
+      topic: t('events.second_event_topic'),
+      moreDetails: t('events.second_event_more_details'),
       image: "https://images.unsplash.com/photo-1521747116042-5a810fda9664?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDIyfHxjY2F0ZWdvcnklMjBldmVudHxlbnwwfHx8fDE2NjMyOTY0NDk&ixlib=rb-1.2.1&q=80&w=600"
     }
   ];
@@ -86,11 +88,11 @@ const IntroducingEvents = () => {
         <Box bg={bgColor} p={8} borderRadius="lg" boxShadow="xl">
           <VStack spacing={6} textAlign="center">
             <Heading as="h2" size="2xl" color={headingColor} fontWeight="bold">
-              Introducing Our Events
+              {t('events.heading')}
             </Heading>
             <Divider borderColor="teal.300" />
             <Text fontSize="lg" color="gray.700" lineHeight="tall">
-              Welcome to the English Club! We are excited to announce our upcoming events designed to enhance your skills, make new friends, and enjoy engaging experiences. Check out our events below!
+              {t('events.intro')}
             </Text>
             <VStack spacing={6} align="stretch">
               {events.map((event, index) => (
@@ -119,11 +121,11 @@ const IntroducingEvents = () => {
                   <Heading as="h3" size="lg" color={headingColor}>
                     {event.title}
                   </Heading>
-                  <Text fontWeight="bold">Time: {event.time}</Text>
-                  <Text fontWeight="bold">Date: {event.date}</Text>
+                  <Text fontWeight="bold">{t('events.time')}: {event.time}</Text>
+                  <Text fontWeight="bold">{t('events.date')}: {event.date}</Text>
                   <Text mt={2}>{event.description}</Text>
                   <Button mt={4} colorScheme="teal" onClick={() => handleOpen(event)}>
-                    More Details
+                    {t('events.more_details')}
                   </Button>
                 </Box>
               ))}
@@ -148,15 +150,15 @@ const IntroducingEvents = () => {
                   height="400px"
                   fallbackSrc="https://via.placeholder.com/600x400?text=Image+Not+Available"
                 />
-                <Text fontWeight="bold">Time:</Text> {selectedEvent.time}
-                <Text fontWeight="bold">Date:</Text> {selectedEvent.date}
-                <Text fontWeight="bold">Place:</Text> {selectedEvent.place}
-                <Text fontWeight="bold">Topic:</Text> {selectedEvent.topic}
+                <Text fontWeight="bold">{t('events.time')}:</Text> {selectedEvent.time}
+                <Text fontWeight="bold">{t('events.date')}:</Text> {selectedEvent.date}
+                <Text fontWeight="bold">{t('events.place')}:</Text> {selectedEvent.place}
+                <Text fontWeight="bold">{t('events.topic')}:</Text> {selectedEvent.topic}
                 <Text mt={4}>{selectedEvent.moreDetails}</Text>
               </ModalBody>
               <ModalFooter>
                 <Button colorScheme="blue" mr={3} onClick={handleClose}>
-                  Close
+                  {t('events.close')}
                 </Button>
               </ModalFooter>
             </ModalContent>

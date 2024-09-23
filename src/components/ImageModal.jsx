@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Box, Image, Modal, ModalOverlay, ModalContent, ModalCloseButton, Spinner } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next'; // Import the useTranslation hook
 
 const ImageModal = ({ isOpen, onClose, imgSrc }) => {
-  const [loading, setLoading] = useState(true); // State for loading image
+  const { t } = useTranslation(); // Use the useTranslation hook for localization
+  const [loading, setLoading] = useState(true);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
@@ -15,14 +17,19 @@ const ImageModal = ({ isOpen, onClose, imgSrc }) => {
               <Spinner size="lg" color="teal.500" />
             </Box>
           )}
-          <Image 
-            src={imgSrc} 
-            alt="Full size view" 
-            width="100%" 
-            borderRadius="md" 
-            onLoad={() => setLoading(false)} // Hide spinner when image loads
-            onError={() => setLoading(false)} // Hide spinner if image fails to load
-            display={loading ? 'none' : 'block'} // Hide image while loading
+          <Image
+            src={imgSrc}
+            alt={t('modal_image_alt')} // Use a translated alt text
+            width="100%"
+            borderRadius="md"
+            onLoad={() => setLoading(false)}
+            onError={() => {
+              setLoading(false);
+              // Optionally, display a fallback image or error message here
+            }}
+            display={loading ? 'none' : 'block'}
+            transition="opacity 0.3s ease-in" // Added fade-in animation
+            opacity={loading ? 0 : 1} // Fade in image when loading completes
           />
         </Box>
       </ModalContent>

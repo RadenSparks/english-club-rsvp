@@ -1,0 +1,108 @@
+{
+  "welcome": "Welcome to the club",
+  "description": "Join exciting and engaging activities.",
+  "hero_title": "Join Our English Club Events!",
+  "hero_date": "Date: 22/09/2024 & 29/09/2024",
+  "rsvp_button": "RSVP Now",
+  "aboutUs": {
+    "label": "About Us",
+    "title": "About Us",
+    "description1": "We are committed to improving English skills through fun activities and events.",
+    "description2": "Join us to enhance your learning experience!",
+    "button": "Join"
+  },
+  "latest_news": "Latest News & Blog",
+  "untitled_post": "Untitled Post",
+  "no_description": "No description available.",
+  "read_more": "Read More",
+  "no_posts_available": "Currently, there are no posts.",
+  "error": {
+    "default_title": "Oh! Something went wrong.",
+    "default_message": "An unexpected error has occurred. Please try again later.",
+    "try_again": "Try Again"
+  },
+  "footer": {
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "instagram": "Instagram",
+    "linkedin": "LinkedIn",
+    "copy_right": "English Club. All rights reserved."
+  },
+  "gallery": {
+    "title": "Photo Gallery",
+    "team_event": "Team event at the English Club",
+    "workshop": "Workshop at the English Club",
+    "students_practice": "Students practicing English",
+    "group_discussion": "Group discussion",
+    "outdoor_activity": "Outdoor activities at the English Club",
+    "cultural_exchange": "Cultural exchange event"
+  },
+  "events": {
+    "heading": "Introducing Our Events",
+    "intro": "Welcome to the English Club! We are excited to announce upcoming events designed to enhance your skills, make new friends, and enjoy fun experiences. Check out our events below!",
+    "first_event_title": "First Event",
+    "first_event_time": "10:00 AM - 12:00 PM",
+    "first_event_date": "September 22, 2024",
+    "first_event_description": "Join the first event of the English Club with fun and educational activities!",
+    "first_event_place": "Community Center",
+    "first_event_topic": "Language games and activities",
+    "first_event_more_details": "Detailed description of the first event.",
+    "second_event_title": "Second Event",
+    "second_event_time": "2:00 PM - 4:00 PM",
+    "second_event_date": "September 29, 2024",
+    "second_event_description": "Join the second event with interesting games and discussions!",
+    "second_event_place": "Town Hall",
+    "second_event_topic": "Discussion and debate",
+    "second_event_more_details": "Detailed description of the second event.",
+    "time": "Time",
+    "date": "Date",
+    "place": "Location",
+    "topic": "Topic",
+    "more_details": "See more",
+    "close": "Close"
+  },
+  "event_location": "Event location",
+  "map_description": "This is the event location. Click the image to view the map.",
+  "open_in_google_maps": "Open in Google Maps",
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "events": "Events",
+    "gallery": "Gallery",
+    "contact": "Contact"
+  },
+  "rsvp": {
+    "title": "Are You Attending?",
+    "description": "Please fill out the form to let us know you'll be attending!",
+    "name": "Your Name",
+    "submit": "Submit RSVP",
+    "validationError": "Name is required.",
+    "success": "Thank you for your RSVP! We look forward to seeing you.",
+    "submissionError": "There was an error submitting your RSVP. Please try again later."
+  },
+  "modal": {
+    "learnMore": "Learn More",
+    "imageNotAvailable": "Image Not Available"
+  },
+  "modal_image_alt": "Full-size image of the selected event or activity",
+  "gallery_title": "Photo Gallery",
+  "previous_slide": "Previous Slide",
+  "next_slide": "Next Slide",
+  "clubActivities": {
+    "heading": "Club Activities",
+    "weeklyConversation": "Weekly conversation club - Practice speaking with other members.",
+    "workshop": "Workshops - Join workshops to improve your skills.",
+    "culturalEvent": "Cultural events - Join us for fun activities celebrating different cultures.",
+    "viewAllActivities": "View All Activities"
+  },
+    "language": {
+      "english": "English",
+      "vietnamese": "Vietnamese",
+      "switchToEnglish": "Switch to English",
+      "switchToVietnamese": "Switch to Vietnamese"
+    },
+    "languageChangeSuccess": "Language Changed",
+    "languageChangeSuccessDescription": "You have switched to {{language}}.",
+    "languageChangeError": "Language Change Error",
+    "languageChangeErrorDescription": "An error occurred while changing the language."
+}
