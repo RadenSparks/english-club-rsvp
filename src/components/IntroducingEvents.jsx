@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // Import useEffect
 import {
   Container,
   Box,
@@ -67,7 +67,7 @@ const IntroducingEvents = () => {
   ];
 
   // Simulate loading
-  React.useEffect(() => {
+  useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1000);

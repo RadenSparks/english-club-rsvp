@@ -9,14 +9,14 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const scrollToSection = (section) => {
-    const element = document.getElementById(section);
+    const element = document.getElementById(section); 
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
   };
 
   return (
@@ -37,9 +37,8 @@ const Navbar = () => {
       {/* Logo Section */}
       <Box>
         <Image 
-          src="/path-to-your-logo.png" // Replace with your logo path or URL
-          alt={t('nav.logoAlt')} // Use a localized alt text for the logo
-          boxSize="40px" // Adjust size as needed
+          src="/assets/img/logo-color-removebg-preview.png" // Ensure this path is correct
+          boxSize={{ base: "30px", md: "40px" }} // Adjust size responsively
           objectFit="contain"
         />
       </Box>
@@ -67,7 +66,7 @@ const Navbar = () => {
 
       {/* Mobile Hamburger Menu Icon */}
       <IconButton
-        aria-label={t('nav.openMenu')} // Localized aria-label
+        aria-label={isOpen ? t('nav.closeMenu') : t('nav.openMenu')} // Localized aria-label
         icon={<HamburgerIcon />}
         size="lg"
         display={{ base: 'inline-flex', md: 'none' }}

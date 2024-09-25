@@ -12,7 +12,7 @@ import SliderModal from './components/SliderModal';
 import { useTranslation } from 'react-i18next';
 
 const ImageGallery = React.lazy(() => import('./components/ImageGallery'));
-const ChatBot = React.lazy(() => import('./components/ChatBot'));
+const ChatBot = React.lazy(() => import('./components/ChatBotEN'));
 const MapPreview = React.lazy(() => import('./components/MapPreview'));
 
 const MotionBox = motion(Box);
@@ -162,18 +162,19 @@ const LandingPage = () => {
         </Box>
         <Footer />
         {isChatBotOpen && (
-          <Box 
-            textAlign="center" 
-            position="fixed" 
-            bottom="20px" 
-            right="20px" 
-            zIndex="1000"
-          >
-            <Button onClick={toggleChatBot} colorScheme="teal">
-              Close ChatBot
-            </Button>
-          </Box>
-        )}
+  <Box 
+    textAlign="center" 
+    position="fixed" 
+    bottom="20px" 
+    left="20px"  // Updated position
+    zIndex="1000"
+  >
+    <Button onClick={toggleChatBot} colorScheme="teal">
+      Close ChatBot
+    </Button>
+  </Box>
+)}
+
         <ErrorBoundary>
           <Suspense fallback={<Box textAlign="center"><Spinner size="xl" color="teal.500" /><Text>Loading ChatBot...</Text></Box>}>
             <ChatBot ref={chatBotRef} />

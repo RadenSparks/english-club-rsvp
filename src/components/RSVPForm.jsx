@@ -30,6 +30,8 @@ const RSVPForm = ({ onRSVP }) => {
     try {
       console.log({ name: trimmedName });
 
+      // Simulate API call here, e.g. await submitRSVP({ name: trimmedName });
+
       toast({
         title: 'RSVP successful!',
         description: t('rsvp.success'),

@@ -18,8 +18,8 @@ const MapPreview = () => {
   const { t } = useTranslation(); // Get the translation function
   const [isOpen, setIsOpen] = useState(false);
 
-  const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.050704378477!2d-122.39986738468184!3d37.78946467975888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858066d83b42d7%3A0xf55f7d9c3d489a5!2sGolden%20Gate%20Park%2C%20San%20Francisco%2C%20CA%2094119%2C%20United%20States!5e0!3m2!1sen!2sin!4v1633393798295!5m2!1sen!2sin";
-  const mapImageUrl = "https://via.placeholder.com/600x300?text=Map+Preview";
+  const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.0470743329676!2d106.6990291!3d10.825577!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529707ff48387%3A0xe1fc3373a8383574!2sJan%20Caf%C3%A9!5e0!3m2!1sen!2s!4v1633393798295!5m2!1sen!2s"; // Updated map URL
+  const mapImageUrl = "https://scontent.fsgn2-9.fna.fbcdn.net/v/t39.30808-6/305569474_450532497121640_4294428843693094959_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeH3LkY6R3NbD0fnBC3l3fuOGNtTXita74AY21NeK1rvgEfKCbRBmd6lLmkFRNm6IspRKtckzbJZSeqL37n33c3G&_nc_ohc=IyevKKd4HywQ7kNvgEIwRN5&_nc_ht=scontent.fsgn2-9.fna&_nc_gid=ACyR3NxBI6ATaXUU-h5oLD8&oh=00_AYBxdd5ehpW0jcNq0Z-DhBZdM3LCIaV1_za81U4ywn7_FQ&oe=66F8C2AE";
 
   const handleOpenModal = () => setIsOpen(true);
   const handleCloseModal = () => setIsOpen(false);
@@ -54,10 +54,11 @@ const MapPreview = () => {
         <Image
           src={mapImageUrl}
           alt={t('modal.imageNotAvailable')} // Use translation for alt text
-          objectFit="cover"
+          objectFit="cover" // Ensure the image covers the Box
           borderRadius="md"
           w="100%"
-          h="100%"
+          h="auto" // Change to 'auto' to maintain aspect ratio
+          maxH="300px" // Set max height to limit overflow
         />
       </Box>
       <Text fontSize="sm" color="gray.600">
