@@ -46,28 +46,57 @@ const ClubActivities = () => {
 
   return (
     <MotionBox id="activities" py={{ base: 12, md: 20 }} textAlign="center">
-      <Heading as="h2" size="2xl" mb={8} color="teal.600">{t('clubActivities.heading')}</Heading>
+      <Heading as="h2" size="2xl" mb={8} color="teal.600">
+        {t('clubActivities.heading')}
+      </Heading>
       <Stack spacing={8} direction={{ base: 'column', md: 'row' }} justify="center">
         <Box boxShadow="lg" p={4} borderRadius="lg" bg="white" maxW="sm">
-          <Image src="https://source.unsplash.com/600x400/?conversation" alt={t('clubActivities.weeklyConversation')} borderRadius="md" />
-          <Text fontSize="lg" mt={4} color="gray.700">{t('clubActivities.weeklyConversation')}</Text>
+          <Image 
+            src={require('./assets/img/hero-1.jpg')} // Updated relative path
+            alt={t('clubActivities.weeklyConversation')}
+            borderRadius="md" 
+          />
+          <Text fontSize="lg" mt={4} color="gray.700">
+            {t('clubActivities.weeklyConversation')}
+          </Text>
         </Box>
         <Box boxShadow="lg" p={4} borderRadius="lg" bg="white" maxW="sm">
-          <Image src="https://source.unsplash.com/600x400/?workshop" alt={t('clubActivities.workshop')} borderRadius="md" />
-          <Text fontSize="lg" mt={4} color="gray.700">{t('clubActivities.workshop')}</Text>
+          <Image 
+            src={require('./assets/img/gallery2.jpg')} // Updated relative path
+            alt={t('clubActivities.workshop')} 
+            borderRadius="md" 
+          />
+          <Text fontSize="lg" mt={4} color="gray.700">
+            {t('clubActivities.workshop')}
+          </Text>
         </Box>
         <Box boxShadow="lg" p={4} borderRadius="lg" bg="white" maxW="sm">
-          <Image src="https://source.unsplash.com/600x400/?cultural-event" alt={t('clubActivities.culturalEvent')} borderRadius="md" />
-          <Text fontSize="lg" mt={4} color="gray.700">{t('clubActivities.culturalEvent')}</Text>
+          <Image 
+            src={require('./assets/img/hero-3.jpg')} // Updated relative path
+            alt={t('clubActivities.culturalEvent')} 
+            borderRadius="md" 
+          />
+          <Text fontSize="lg" mt={4} color="gray.700">
+            {t('clubActivities.culturalEvent')}
+          </Text>
         </Box>
       </Stack>
       <MotionBox whileHover={{ scale: 1.1 }} mt={6}>
-        <Button colorScheme="teal" size="lg" borderRadius="full" aria-label={t('clubActivities.viewAllActivities')}>{t('clubActivities.viewAllActivities')}</Button>
+        <Button 
+          colorScheme="teal" 
+          size="lg" 
+          borderRadius="full" 
+          aria-label={t('clubActivities.viewAllActivities')}
+        >
+          {t('clubActivities.viewAllActivities')}
+        </Button>
       </MotionBox>
     </MotionBox>
   );
 };
 
+
+// Landing Page Component
 const LandingPage = () => {
   const chatBotRef = useRef(null);
   const [isChatBotOpen, setIsChatBotOpen] = useState(false);
@@ -110,7 +139,7 @@ const LandingPage = () => {
   return (
     <>
       <Helmet>
-        <title>Your English Club</title>
+        <title>Affinity English Club</title>
         <meta name="description" content="Join our English club for engaging activities and community." />
         <meta name="keywords" content="English club, community, activities, language learning" />
         <meta name="author" content="Your Name" />
@@ -162,19 +191,18 @@ const LandingPage = () => {
         </Box>
         <Footer />
         {isChatBotOpen && (
-  <Box 
-    textAlign="center" 
-    position="fixed" 
-    bottom="20px" 
-    left="20px"  // Updated position
-    zIndex="1000"
-  >
-    <Button onClick={toggleChatBot} colorScheme="teal">
-      Close ChatBot
-    </Button>
-  </Box>
-)}
-
+          <Box 
+            textAlign="center" 
+            position="fixed" 
+            bottom="20px" 
+            left="20px"  // Updated position
+            zIndex="1000"
+          >
+            <Button onClick={toggleChatBot} colorScheme="teal">
+              Close ChatBot
+            </Button>
+          </Box>
+        )}
         <ErrorBoundary>
           <Suspense fallback={<Box textAlign="center"><Spinner size="xl" color="teal.500" /><Text>Loading ChatBot...</Text></Box>}>
             <ChatBot ref={chatBotRef} />

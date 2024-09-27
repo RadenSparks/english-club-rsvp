@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; // Import useEffect
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Box,
@@ -19,15 +19,19 @@ import {
   Divider,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next'; // Import the useTranslation hook
+import { useTranslation } from 'react-i18next';
+
+// Import local images
+import eventImage1 from '../assets/img/poster_1.jpg';
+import eventImage2 from '../assets/img/poster_2.jpg';
 
 const MotionBox = motion(Box);
 
 const IntroducingEvents = () => {
-  const { t } = useTranslation(); // Use the useTranslation hook for localization
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [loading, setLoading] = useState(true); // Simulating loading state
+  const [loading, setLoading] = useState(true);
 
   const handleOpen = (event) => {
     setSelectedEvent(event);
@@ -45,28 +49,25 @@ const IntroducingEvents = () => {
 
   const events = [
     {
-      title: t('events.first_event_title'),
-      time: t('events.first_event_time'),
-      date: t('events.first_event_date'),
-      description: t('events.first_event_description'),
-      place: t('events.first_event_place'),
-      topic: t('events.first_event_topic'),
-      moreDetails: t('events.first_event_more_details'),
-      image: "https://images.unsplash.com/photo-1521747116042-5a810fda9664?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fG1vdW50YWluJTIwZXZlbnR8ZW58MHx8fHwxNjYzMjk2NDQ5&ixlib=rb-1.2.1&q=80&w=600"
+      title: t('events.first_event.title'),
+      time: t('events.first_event.time'),
+      date: t('events.first_event.date'),
+      description: t('events.first_event.description'),
+      place: t('events.first_event.location.name'),
+      moreDetails: t('events.more_details'),
+      image: eventImage1,
     },
     {
-      title: t('events.second_event_title'),
-      time: t('events.second_event_time'),
-      date: t('events.second_event_date'),
-      description: t('events.second_event_description'),
-      place: t('events.second_event_place'),
-      topic: t('events.second_event_topic'),
-      moreDetails: t('events.second_event_more_details'),
-      image: "https://images.unsplash.com/photo-1521747116042-5a810fda9664?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDIyfHxjY2F0ZWdvcnklMjBldmVudHxlbnwwfHx8fDE2NjMyOTY0NDk&ixlib=rb-1.2.1&q=80&w=600"
+      title: t('events.second_event.title'),
+      time: t('events.second_event.time'),
+      date: t('events.second_event.date'),
+      description: t('events.second_event.description'),
+      place: t('events.second_event.location.name'),
+      moreDetails: t('events.more_details'),
+      image: eventImage2,
     }
   ];
 
-  // Simulate loading
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -116,7 +117,6 @@ const IntroducingEvents = () => {
                     width="100%" 
                     height="200px" 
                     fallbackSrc="https://via.placeholder.com/600x400?text=Image+Not+Available"
-                    _hover={{ transform: 'scale(1.05)', transition: 'transform 0.3s ease-in-out' }}
                   />
                   <Heading as="h3" size="lg" color={headingColor}>
                     {event.title}
@@ -125,7 +125,7 @@ const IntroducingEvents = () => {
                   <Text fontWeight="bold">{t('events.date')}: {event.date}</Text>
                   <Text mt={2}>{event.description}</Text>
                   <Button mt={4} colorScheme="teal" onClick={() => handleOpen(event)}>
-                    {t('events.more_details')}
+                    {event.moreDetails}
                   </Button>
                 </Box>
               ))}
@@ -144,20 +144,18 @@ const IntroducingEvents = () => {
                   src={selectedEvent.image} 
                   alt={selectedEvent.title} 
                   borderRadius="md" 
-                  mb={4} 
-                  objectFit="cover" 
+                  objectFit="contain" // Change to contain to fit the image
                   width="100%" 
-                  height="400px"
+                  height="auto" // Adjust height to auto for better aspect ratio
                   fallbackSrc="https://via.placeholder.com/600x400?text=Image+Not+Available"
                 />
                 <Text fontWeight="bold">{t('events.time')}:</Text> {selectedEvent.time}
                 <Text fontWeight="bold">{t('events.date')}:</Text> {selectedEvent.date}
                 <Text fontWeight="bold">{t('events.place')}:</Text> {selectedEvent.place}
-                <Text fontWeight="bold">{t('events.topic')}:</Text> {selectedEvent.topic}
-                <Text mt={4}>{selectedEvent.moreDetails}</Text>
+                <Text mt={2}>{selectedEvent.description}</Text>
               </ModalBody>
               <ModalFooter>
-                <Button colorScheme="blue" mr={3} onClick={handleClose}>
+                <Button colorScheme="teal" onClick={handleClose}>
                   {t('events.close')}
                 </Button>
               </ModalFooter>

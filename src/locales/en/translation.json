@@ -2,7 +2,7 @@
   "welcome": "Welcome to the club",
   "description": "Join exciting and engaging activities.",
   "hero_title": "Join Our English Club Events!",
-  "hero_date": "Date: 22/09/2024 & 29/09/2024",
+  "hero_date": "Date: 29/09/2024 & 6/10/2024",
   "rsvp_button": "RSVP Now",
   "aboutUs": {
     "label": "About Us",
@@ -40,20 +40,41 @@
   "events": {
     "heading": "Introducing Our Events",
     "intro": "Welcome to the English Club! We are excited to announce upcoming events designed to enhance your skills, make new friends, and enjoy fun experiences. Check out our events below!",
-    "first_event_title": "First Event",
-    "first_event_time": "10:00 AM - 12:00 PM",
-    "first_event_date": "September 22, 2024",
-    "first_event_description": "Join the first event of the English Club with fun and educational activities!",
-    "first_event_place": "Community Center",
-    "first_event_topic": "Language games and activities",
-    "first_event_more_details": "Detailed description of the first event.",
-    "second_event_title": "Second Event",
-    "second_event_time": "2:00 PM - 4:00 PM",
-    "second_event_date": "September 29, 2024",
-    "second_event_description": "Join the second event with interesting games and discussions!",
-    "second_event_place": "Town Hall",
-    "second_event_topic": "Discussion and debate",
-    "second_event_more_details": "Detailed description of the second event.",
+    "first_event": {
+      "title": "Practice Speaking English: Travel",
+      "date": "September 29, 2024",
+      "time": "9:30 AM - 11:30 AM",
+      "location": {
+        "name": "Jan Cafe",
+        "address": "1/48 Đ. Đặng Thuỳ Trâm, Phường 13, Bình Thạnh, TP. Hồ Chí Minh"
+      },
+      "description": "Join the first event of the Affinity English Club with fun and educational activities! This session will focus on practicing English in the context of travel, perfect for anyone looking to improve their conversational skills while discussing travel experiences, destinations, and tips.",
+      "activities": [
+        "Icebreaker introductions",
+        "Group discussions on favorite travel destinations",
+        "Role-playing travel scenarios (e.g., booking hotels, asking for directions)",
+        "Vocabulary building related to travel"
+      ],
+      "target_audience": "All levels of English speakers are welcome!"
+    },
+    "second_event": {
+      "title": "Boardgame Session: Werewolf by Night",
+      "date": "October 6, 2024",
+      "time": "9:30 PM - 11:30 PM",
+      "location": {
+        "name": "Jan Cafe",
+        "address": "1/48 Đ. Đặng Thuỳ Trâm, Phường 13, Bình Thạnh, TP. Hồ Chí Minh"
+      },
+      "description": "Join the second event with exciting and engaging board games! This event will encourage team collaboration, critical thinking, and lots of fun as you participate in the classic game 'Werewolf' under the moonlight.",
+      "activities": [
+        "Interactive games",
+        "Group discussions on current topics",
+        "Debate sessions",
+        "Werewolf game with team roles and scenarios",
+        "Light refreshments and casual networking"
+      ],
+      "target_audience": "All levels of English speakers are welcome, especially those who enjoy strategic games and social interaction!"
+    },
     "time": "Time",
     "date": "Date",
     "place": "Location",
@@ -77,7 +98,7 @@
     "name": "Your Name",
     "submit": "Submit RSVP",
     "validationError": "Name is required.",
-    "success": "Thank you for your RSVP! We look forward to seeing you.",
+    "success": "Thank you for your RSVP! Now we just need you to provide some extra information for our assistance.",
     "submissionError": "There was an error submitting your RSVP. Please try again later."
   },
   "modal": {
@@ -95,14 +116,14 @@
     "culturalEvent": "Cultural events - Join us for fun activities celebrating different cultures.",
     "viewAllActivities": "View All Activities"
   },
-    "language": {
-      "english": "English",
-      "vietnamese": "Vietnamese",
-      "switchToEnglish": "Switch to English",
-      "switchToVietnamese": "Switch to Vietnamese"
-    },
-    "languageChangeSuccess": "Language Changed",
-    "languageChangeSuccessDescription": "You have switched to {{language}}.",
-    "languageChangeError": "Language Change Error",
-    "languageChangeErrorDescription": "An error occurred while changing the language."
+  "language": {
+    "english": "English",
+    "vietnamese": "Vietnamese",
+    "switchToEnglish": "Switch to English",
+    "switchToVietnamese": "Switch to Vietnamese"
+  },
+  "languageChangeSuccess": "Language Changed",
+  "languageChangeSuccessDescription": "You have switched to {{language}}.",
+  "languageChangeError": "Language Change Error",
+  "languageChangeErrorDescription": "An error occurred while changing the language."
 }

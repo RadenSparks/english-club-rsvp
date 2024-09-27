@@ -1,59 +1,80 @@
 {
   "welcome": "Chào mừng đến với câu lạc bộ",
   "description": "Tham gia các hoạt động thú vị và hấp dẫn.",
-  "hero_title": "Tham Gia Các Sự Kiện Câu Lạc Bộ Tiếng Anh!",
-  "hero_date": "Ngày: 22/09/2024 & 29/09/2024",
-  "rsvp_button": "Đăng Ký Ngay",
+  "hero_title": "Tham gia sự kiện Câu Lạc Bộ Tiếng Anh của chúng tôi!",
+  "hero_date": "Ngày: 29/09/2024 & 6/10/2024",
+  "rsvp_button": "Đăng ký ngay",
   "aboutUs": {
-    "label": "Phần Giới Thiệu",
+    "label": "Về Chúng Tôi",
     "title": "Về Chúng Tôi",
     "description1": "Chúng tôi cam kết cải thiện kỹ năng tiếng Anh thông qua các hoạt động và sự kiện thú vị.",
-    "description2": "Tham gia cùng chúng tôi để nâng cao trải nghiệm học tập của bạn!",
-    "button": "Tham Gia"
+    "description2": "Tham gia với chúng tôi để nâng cao trải nghiệm học tập của bạn!",
+    "button": "Tham gia"
   },
-  "latest_news": "Tin Tức & Blog Mới Nhất",
+  "latest_news": "Tin Tức Mới Nhất & Blog",
   "untitled_post": "Bài Viết Không Có Tiêu Đề",
   "no_description": "Không có mô tả nào.",
   "read_more": "Đọc Thêm",
   "no_posts_available": "Hiện tại không có bài viết nào.",
   "error": {
-    "default_title": "Ôi! Có điều gì đó đã xảy ra.",
-    "default_message": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại sau.",
-    "try_again": "Thử Lại"
+    "default_title": "Ôi! Có gì đó không ổn.",
+    "default_message": "Đã xảy ra một lỗi không mong muốn. Vui lòng thử lại sau.",
+    "try_again": "Thử lại"
   },
   "footer": {
     "facebook": "Facebook",
     "twitter": "Twitter",
     "instagram": "Instagram",
     "linkedin": "LinkedIn",
-    "copy_right": "Câu lạc bộ tiếng Anh. Bảo lưu mọi quyền."
+    "copy_right": "Câu Lạc Bộ Tiếng Anh. Bảo lưu mọi quyền."
   },
   "gallery": {
-    "title": "Thư Viện Hình Ảnh",
-    "team_event": "Sự kiện đội ngũ tại Câu lạc bộ tiếng Anh",
-    "workshop": "Hội thảo tại Câu lạc bộ tiếng Anh",
-    "students_practice": "Học viên thực hành tiếng Anh",
-    "group_discussion": "Buổi thảo luận nhóm",
-    "outdoor_activity": "Hoạt động ngoài trời tại Câu lạc bộ tiếng Anh",
-    "cultural_exchange": "Sự kiện giao lưu văn hóa"
+    "title": "Thư Viện Ảnh",
+    "team_event": "Sự kiện nhóm tại Câu Lạc Bộ Tiếng Anh",
+    "workshop": "Hội thảo tại Câu Lạc Bộ Tiếng Anh",
+    "students_practice": "Học sinh thực hành tiếng Anh",
+    "group_discussion": "Thảo luận nhóm",
+    "outdoor_activity": "Hoạt động ngoài trời tại Câu Lạc Bộ Tiếng Anh",
+    "cultural_exchange": "Sự kiện trao đổi văn hóa"
   },
   "events": {
-    "heading": "Giới thiệu các sự kiện của chúng tôi",
-    "intro": "Chào mừng đến với Câu lạc bộ tiếng Anh! Chúng tôi rất vui mừng thông báo về các sự kiện sắp tới được thiết kế để nâng cao kỹ năng của bạn, kết bạn mới và tận hưởng những trải nghiệm thú vị. Hãy xem các sự kiện của chúng tôi bên dưới!",
-    "first_event_title": "Sự kiện đầu tiên",
-    "first_event_time": "10:00 AM - 12:00 PM",
-    "first_event_date": "Ngày 22 tháng 9 năm 2024",
-    "first_event_description": "Tham gia sự kiện đầu tiên của Câu lạc bộ tiếng Anh với nhiều hoạt động vui nhộn và học tập!",
-    "first_event_place": "Trung tâm cộng đồng",
-    "first_event_topic": "Trò chơi và hoạt động ngôn ngữ",
-    "first_event_more_details": "Mô tả chi tiết về sự kiện đầu tiên.",
-    "second_event_title": "Sự kiện thứ hai",
-    "second_event_time": "2:00 PM - 4:00 PM",
-    "second_event_date": "Ngày 29 tháng 9 năm 2024",
-    "second_event_description": "Tham gia sự kiện thứ hai với những trò chơi và thảo luận thú vị!",
-    "second_event_place": "Tòa thị chính",
-    "second_event_topic": "Thảo luận và tranh biện",
-    "second_event_more_details": "Mô tả chi tiết về sự kiện thứ hai.",
+    "heading": "Giới thiệu Các Sự Kiện Của Chúng Tôi",
+    "intro": "Chào mừng bạn đến với Câu Lạc Bộ Tiếng Anh! Chúng tôi rất vui mừng thông báo về các sự kiện sắp tới được thiết kế để nâng cao kỹ năng của bạn, kết bạn mới và tận hưởng những trải nghiệm thú vị. Hãy xem các sự kiện của chúng tôi bên dưới!",
+    "first_event": {
+      "title": "Thực Hành Nói Tiếng Anh: Du Lịch",
+      "date": "Ngày 29 tháng 9 năm 2024",
+      "time": "9:30 AM - 11:30 AM",
+      "location": {
+        "name": "Jan Cafe",
+        "address": "1/48 Đ. Đặng Thùy Trâm, Phường 13, Bình Thạnh, TP. Hồ Chí Minh"
+      },
+      "description": "Tham gia sự kiện đầu tiên của Câu Lạc Bộ Tiếng Anh Affinity với các hoạt động vui vẻ và giáo dục! Phiên này sẽ tập trung vào việc thực hành tiếng Anh trong bối cảnh du lịch, hoàn hảo cho bất kỳ ai muốn cải thiện kỹ năng giao tiếp của mình khi thảo luận về những trải nghiệm, điểm đến và mẹo du lịch.",
+      "activities": [
+        "Giới thiệu mở đầu",
+        "Thảo luận nhóm về những điểm đến yêu thích",
+        "Đóng vai trong các tình huống du lịch (ví dụ: đặt khách sạn, hỏi đường đi)",
+        "Xây dựng từ vựng liên quan đến du lịch"
+      ],
+      "target_audience": "Tất cả các cấp độ người nói tiếng Anh đều được hoan nghênh!"
+    },
+    "second_event": {
+      "title": "Buổi Chơi Boardgame: Werewolf by Night",
+      "date": "Ngày 6 tháng 10 năm 2024",
+      "time": "9:30 PM - 11:30 PM",
+      "location": {
+        "name": "Jan Cafe",
+        "address": "1/48 Đ. Đặng Thùy Trâm, Phường 13, Bình Thạnh, TP. Hồ Chí Minh"
+      },
+      "description": "Tham gia sự kiện thứ hai với các trò chơi boardgame thú vị và hấp dẫn! Sự kiện này sẽ khuyến khích sự hợp tác nhóm, tư duy phản biện và rất nhiều niềm vui khi bạn tham gia vào trò chơi kinh điển 'Werewolf'.",
+      "activities": [
+        "Trò chơi tương tác",
+        "Thảo luận nhóm về các chủ đề hiện tại",
+        "Các phiên tranh luận",
+        "Trò chơi Werewolf với vai trò và tình huống nhóm",
+        "Đồ ăn nhẹ và giao lưu thoải mái"
+      ],
+      "target_audience": "Tất cả các cấp độ người nói tiếng Anh đều được hoan nghênh, đặc biệt là những người thích trò chơi chiến lược và tương tác xã hội!"
+    },
     "time": "Thời gian",
     "date": "Ngày",
     "place": "Địa điểm",
@@ -62,47 +83,47 @@
     "close": "Đóng"
   },
   "event_location": "Địa điểm sự kiện",
-  "map_description": "Đây là vị trí của sự kiện. Nhấp vào hình ảnh để xem bản đồ.",
+  "map_description": "Đây là địa điểm sự kiện. Nhấp vào hình ảnh để xem bản đồ.",
   "open_in_google_maps": "Mở trong Google Maps",
   "nav": {
     "home": "Trang Chủ",
-    "about": "Giới Thiệu",
+    "about": "Về chúng tôi",
     "events": "Sự Kiện",
     "gallery": "Thư Viện",
     "contact": "Liên Hệ"
   },
   "rsvp": {
     "title": "Bạn Có Tham Gia Không?",
-    "description": "Vui lòng điền vào biểu mẫu để cho chúng tôi biết bạn sẽ đến!",
-    "name": "Tên Của Bạn",
+    "description": "Vui lòng điền vào biểu mẫu để cho chúng tôi biết bạn sẽ tham gia!",
+    "name": "Tên của bạn",
     "submit": "Gửi RSVP",
     "validationError": "Tên là bắt buộc.",
-    "success": "Cảm ơn bạn đã RSVP! Chúng tôi mong được gặp bạn.",
-    "submissionError": "Đã có lỗi khi gửi RSVP của bạn. Vui lòng thử lại sau."
+    "success": "Cảm ơn bạn đã gửi RSVP! Bây giờ chúng tôi chỉ cần bạn cung cấp một số thông tin bổ sung để hỗ trợ chúng tôi.",
+    "submissionError": "Đã có lỗi xảy ra khi gửi RSVP của bạn. Vui lòng thử lại sau."
   },
   "modal": {
     "learnMore": "Tìm Hiểu Thêm",
-    "imageNotAvailable": "Hình Ảnh Không Có"
+    "imageNotAvailable": "Hình ảnh không có sẵn"
   },
-  "modal_image_alt": "Hình ảnh kích thước đầy đủ của bức ảnh đã chọn",
+  "modal_image_alt": "Hình ảnh toàn màn hình của sự kiện hoặc hoạt động đã chọn",
   "gallery_title": "Thư Viện Ảnh",
-  "previous_slide": "Slide trước",
-  "next_slide": "Slide tiếp theo",
+  "previous_slide": "Trang Trước",
+  "next_slide": "Trang Kế",
   "clubActivities": {
     "heading": "Các Hoạt Động Câu Lạc Bộ",
-    "weeklyConversation": "Câu lạc bộ trò chuyện hàng tuần - Luyện tập nói chuyện với các thành viên khác.",
-    "workshop": "Các buổi hội thảo - Tham gia hội thảo để cải thiện kỹ năng của bạn.",
-    "culturalEvent": "Các sự kiện văn hóa - Tham gia chúng tôi trong các hoạt động vui vẻ kỷ niệm các nền văn hóa khác nhau.",
-    "viewAllActivities": "Xem Tất Cả Hoạt Động"
+    "weeklyConversation": "Câu lạc bộ trò chuyện hàng tuần - Thực hành nói chuyện với các thành viên khác.",
+    "workshop": "Hội thảo - Tham gia các hội thảo để cải thiện kỹ năng của bạn.",
+    "culturalEvent": "Sự kiện văn hóa - Tham gia các hoạt động thú vị tôn vinh các nền văn hóa khác nhau.",
+    "viewAllActivities": "Xem Tất Cả Các Hoạt Động"
   },
-    "language": {
-      "english": "Tiếng Anh",
-      "vietnamese": "Tiếng Việt",
-      "switchToEnglish": "Chuyển sang Tiếng Anh",
-      "switchToVietnamese": "Chuyển sang Tiếng Việt"
-    },
-    "languageChangeSuccess": "Đổi Ngôn Ngữ Thành Công",
-    "languageChangeSuccessDescription": "Bạn đã chuyển sang {{language}}.",
-    "languageChangeError": "Lỗi Đổi Ngôn Ngữ",
-    "languageChangeErrorDescription": "Đã xảy ra lỗi khi đổi ngôn ngữ."
+  "language": {
+    "english": "Tiếng Anh",
+    "vietnamese": "Tiếng Việt",
+    "switchToEnglish": "Chuyển sang tiếng Anh",
+    "switchToVietnamese": "Chuyển sang tiếng Việt"
+  },
+  "languageChangeSuccess": "Thay Đổi Ngôn Ngữ Thành Công",
+  "languageChangeSuccessDescription": "Bạn đã chuyển sang {{language}}.",
+  "languageChangeError": "Lỗi Thay Đổi Ngôn Ngữ",
+  "languageChangeErrorDescription": "Đã có lỗi xảy ra khi thay đổi ngôn ngữ."
 }

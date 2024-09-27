@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { Box, Heading, Image, Grid, Spinner } from '@chakra-ui/react';
-import ImageModal from './ImageModal'; // Ensure this is the correct path
+import ImageModal from './ImageModal';
 import { useTranslation } from 'react-i18next'; // Import the useTranslation hook
 
+// Import images from the local assets directory
 const images = [
-  "https://via.placeholder.com/600x300",
-  "https://via.placeholder.com/600x300?text=Slide+2",
-  "https://via.placeholder.com/600x300?text=Slide+3",
-  "https://via.placeholder.com/600x300?text=Slide+4",
-  "https://via.placeholder.com/600x300?text=Slide+5",
-  "https://via.placeholder.com/600x300?text=Slide+6",
-  "https://via.placeholder.com/600x300?text=Slide+7",
-  "https://via.placeholder.com/600x300?text=Slide+8",
+  require('../assets/img/gallery1.jpg'),
+  require('../assets/img/gallery2.jpg'),
+  require('../assets/img/gallery3.jpg'),
+  require('../assets/img/gallery4.jpg'),
+  require('../assets/img/gallery5.jpg'),
+  require('../assets/img/gallery6.jpg'),
+  require('../assets/img/hero-3.jpg'),
+  require('../assets/img/hero-1.jpg'),
 ];
 
 const ImageGallery = () => {
@@ -67,7 +68,7 @@ const ImageGallery = () => {
           >
             <Image
               src={src}
-              alt={`Thumbnail ${index + 1}`}
+              alt={t('image_alt', { index: index + 1 })} // Translated alt text
               width="100%"
               height="auto"
               objectFit="cover"
@@ -76,7 +77,7 @@ const ImageGallery = () => {
             />
             {imageLoading[index] && (
               <Box position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)">
-                <Spinner size="lg" color="teal.500" />
+                <Spinner size="lg" color="teal.500" label={t('loading_spinner_alt')} /> {/* Translated loading spinner alt */}
               </Box>
             )}
           </Box>

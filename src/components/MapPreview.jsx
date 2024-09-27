@@ -34,10 +34,10 @@ const MapPreview = () => {
       mx={{ base: 4, md: 8 }}
     >
       <Heading as="h2" size="lg" mb={4} color="teal.600">
-        {t('event_location')} {/* Use translation for event location */}
+        {t('event_location')} {/* Translated heading */}
       </Heading>
       <Text mb={6} fontSize="lg" color="gray.600">
-        {t('map_description')} {/* Use translation for map description */}
+        {t('map_description')} {/* Translated description */}
       </Text>
       <Box
         borderRadius="md"
@@ -53,7 +53,7 @@ const MapPreview = () => {
       >
         <Image
           src={mapImageUrl}
-          alt={t('modal.imageNotAvailable')} // Use translation for alt text
+          alt={t('modal.imageNotAvailable')} // Translated alt text
           objectFit="cover" // Ensure the image covers the Box
           borderRadius="md"
           w="100%"
@@ -63,14 +63,14 @@ const MapPreview = () => {
       </Box>
       <Text fontSize="sm" color="gray.600">
         <Link href="https://www.google.com/maps" color="teal.500" isExternal>
-          {t('open_in_google_maps')} {/* Use translation for link text */}
+          {t('open_in_google_maps')} {/* Translated link */}
         </Link>
       </Text>
 
       <Modal isOpen={isOpen} onClose={handleCloseModal} size="full">
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>{t('event_location')}</ModalHeader> {/* Use translation for modal header */}
+          <ModalHeader>{t('event_location')}</ModalHeader> {/* Translated modal header */}
           <ModalCloseButton />
           <ModalBody p={0}>
             <iframe

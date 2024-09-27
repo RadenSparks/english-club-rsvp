@@ -4,9 +4,9 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { useTranslation } from 'react-i18next';
 
 const images = [
-  require('../assets/img/hero-1.jpg'),
+  require('../assets/img/gallery2.jpg'),
+  require('../assets/img/gallery7.jpg'),
   require('../assets/img/hero-2.jpg'),
-  require('../assets/img/hero-3.jpg'),
 ];
 
 const HeroSection = () => {

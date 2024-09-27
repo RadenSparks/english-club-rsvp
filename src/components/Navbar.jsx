@@ -36,12 +36,16 @@ const Navbar = () => {
     >
       {/* Logo Section */}
       <Box>
-        <Image 
-          src="/assets/img/logo-color-removebg-preview.png" // Ensure this path is correct
-          boxSize={{ base: "30px", md: "40px" }} // Adjust size responsively
-          objectFit="contain"
-        />
-      </Box>
+      <Box>
+  <Image 
+    src={require('../assets/img/logo.png')} // Ensure the path is correct
+    boxSize={{ base: "70px", md: "90px" }} // Increased size for better visibility
+    objectFit="contain"
+  />
+</Box>
+
+</Box>
+
 
       {/* Desktop Navigation Links */}
       <HStack as="nav" spacing={6} display={{ base: 'none', md: 'flex' }}>
