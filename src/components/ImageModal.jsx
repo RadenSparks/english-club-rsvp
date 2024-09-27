@@ -5,11 +5,16 @@ import { useTranslation } from 'react-i18next'; // Import the useTranslation hoo
 const ImageModal = ({ isOpen, onClose, imgSrc }) => {
   const { t } = useTranslation(); // Use the useTranslation hook for localization
   const [loading, setLoading] = useState(true);
+  const [size, setSize] = useState('lg'); // Initial size of the modal
+
+  const handleClick = () => {
+    setSize((prevSize) => (prevSize === 'lg' ? 'xl' : 'lg')); // Toggle size between 'lg' and 'xl'
+  };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
+    <Modal isOpen={isOpen} onClose={onClose} size={size} isCentered>
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent onClick={handleClick} cursor="pointer"> {/* Change cursor to pointer */}
         <ModalCloseButton />
         <Box p={4} position="relative">
           {loading && (
