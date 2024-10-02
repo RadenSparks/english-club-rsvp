@@ -8,8 +8,11 @@ const RSVPForm = ({ onRSVP }) => {
   const [loading, setLoading] = useState(false);
   const toast = useToast();
 
+  const fakeApiCall = () => new Promise((resolve) => setTimeout(resolve, 2000)); // Simulated API call
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (loading) return; // Prevent multiple submissions
     setLoading(true);
     
     const trimmedName = name.trim();
@@ -21,16 +24,17 @@ const RSVPForm = ({ onRSVP }) => {
         status: 'error',
         duration: 4000,
         isClosable: true,
-        position: 'top',
+        position: 'top', // Keeping toast at the top
       });
       setLoading(false);
+      document.getElementById('name-input').focus(); // Focus on input after error
       return;
     }
 
     try {
       console.log({ name: trimmedName });
 
-      // Simulate API call here, e.g. await submitRSVP({ name: trimmedName });
+      await fakeApiCall(); // Simulated API call
 
       toast({
         title: 'RSVP successful!',
@@ -38,11 +42,12 @@ const RSVPForm = ({ onRSVP }) => {
         status: 'success',
         duration: 4000,
         isClosable: true,
-        position: 'top',
+        position: 'top', // Keeping toast at the top
       });
 
       setName('');
-      onRSVP(); // Trigger additional actions, like opening a chatbot
+      document.getElementById('name-input').focus(); // Refocus input after success
+      onRSVP(); // Trigger additional actions like opening the chatbot
     } catch (error) {
       console.error('Error submitting RSVP:', error);
       toast({
@@ -51,7 +56,7 @@ const RSVPForm = ({ onRSVP }) => {
         status: 'error',
         duration: 4000,
         isClosable: true,
-        position: 'top',
+        position: 'top', // Keeping toast at the top
       });
     } finally {
       setLoading(false);
@@ -73,20 +78,21 @@ const RSVPForm = ({ onRSVP }) => {
               <Box>
                 <FormLabel fontSize="lg" color="gray.700">{t('rsvp.name')}</FormLabel>
                 <Input 
+                  id="name-input" // Added ID for focus management
                   value={name}
                   onChange={(e) => setName(e.target.value)} 
                   placeholder={t('rsvp.name')}
                   size="lg"
                   focusBorderColor="teal.500"
                   _placeholder={{ color: 'gray.400' }}
+                  aria-label={t('rsvp.name')} // Added aria-label
                   isRequired
-                  aria-label="Name input"
                 />
               </Box>
               <Button 
                 type="submit"
                 colorScheme="teal" 
-                isLoading={loading}
+                isLoading={loading} // Prevent multiple submissions
                 size="lg"
                 _hover={{ bg: 'teal.600' }} 
                 _focus={{ boxShadow: '0 0 0 3px rgba(66, 153, 225, 0.6)' }}

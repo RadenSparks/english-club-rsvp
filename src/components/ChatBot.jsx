@@ -14,20 +14,20 @@ const ChatBot = forwardRef(({ language }, ref) => {
   }, [language]);
 
   useEffect(() => {
-    // Close the chatbot when the bot ID changes
-    setIsVisible(false);
+    if (!currentBotId) return;
 
-    const loadScript = () => {
-      const existingScript = document.querySelector('script[src="https://app.artibot.ai/loader.js"]');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
+    const loadChatBotScript = () => {
+      const scriptId = 'artibot-script';
+      let script = document.getElementById(scriptId);
+
+      if (!script) {
+        script = document.createElement('script');
+        script.id = scriptId;
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = 'https://app.artibot.ai/loader.js';
+        document.head.appendChild(script);
       }
-
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.async = true;
-      script.src = 'https://app.artibot.ai/loader.js';
-      document.head.appendChild(script);
 
       script.onload = () => {
         if (window.ArtiBot) {
@@ -49,14 +49,12 @@ const ChatBot = forwardRef(({ language }, ref) => {
       };
     };
 
-    if (currentBotId) {
-      loadScript();
-    }
+    loadChatBotScript();
 
     return () => {
       const chatbotElement = document.getElementById(`artibot-${currentBotId}`);
       if (chatbotElement) {
-        chatbotElement.innerHTML = ''; // Clear the chatbot content
+        chatbotElement.innerHTML = ''; // Clear the chatbot content on unmount or bot ID change
       }
     };
   }, [currentBotId]);
@@ -74,10 +72,10 @@ const ChatBot = forwardRef(({ language }, ref) => {
         background: '#fff',
         boxShadow: '2px 0 10px rgba(0,0,0,0.1)',
         transition: 'transform 0.3s',
-        transform: isVisible ? 'translateX(0)' : 'translateX(-100%)'
+        transform: isVisible ? 'translateX(0)' : 'translateX(-100%)',
       }}>
         <div id={`artibot-${currentBotId}`} style={{ width: '100%', height: '100%' }}>
-          {/* Chatbot iframe or content goes here */}
+          {/* Chatbot iframe or content */}
         </div>
       </div>
     </div>
