@@ -124,6 +124,5 @@
   },
   "languageChangeSuccess": "Language Changed",
   "languageChangeSuccessDescription": "You have switched to {{language}}.",
-  "languageChangeError": "Language Change Error",
-  "languageChangeErrorDescription": "An error occurred while changing the language."
+  "languageChangeError": "Language change error."
 }

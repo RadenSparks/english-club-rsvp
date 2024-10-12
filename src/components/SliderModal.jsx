@@ -1,54 +1,83 @@
 import React, { useState } from 'react';
-import { Box, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Image, Text, SimpleGrid, Button, Spinner } from '@chakra-ui/react';
+import { Box, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Text, SimpleGrid, Button, Spinner, Heading, HStack, IconButton } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next'; // Import the useTranslation hook
+import { useTranslation } from 'react-i18next';
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import learningMaterials from '../locales/LearningMaterials.json';
 
 const MotionBox = motion(Box);
 
-const SliderModal = ({ posts }) => {
-  const { t } = useTranslation(); // Get the translation function
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedPost, setSelectedPost] = useState(null);
-  const [loading, setLoading] = useState(false);
+const postsPerPage = 3; // Number of posts to display at once
 
-  const openModal = (post) => {
-    setSelectedPost(post);
+const SliderModal = () => {
+  const { t } = useTranslation();
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedMaterial, setSelectedMaterial] = useState(null);
+  const [loading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [highlightedMaterialId, setHighlightedMaterialId] = useState(null); // Highlight state
+
+  const totalPages = Math.ceil(learningMaterials.length / postsPerPage);
+
+  const openModal = (material) => {
+    setSelectedMaterial(material);
+    setHighlightedMaterialId(material.id); // Set highlighted material
     setIsOpen(true);
   };
 
   const closeModal = () => {
     setIsOpen(false);
-    setSelectedPost(null);
+    setSelectedMaterial(null);
+    setHighlightedMaterialId(null); // Reset highlighted material
+    setCurrentPage(0);
   };
 
+  const handleNext = () => {
+    if (currentPage < totalPages - 1) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentPage > 0) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  const paginatedMaterials = learningMaterials.slice(
+    currentPage * postsPerPage,
+    currentPage * postsPerPage + postsPerPage
+  );
+
   return (
-    <Box>
-      <MotionBox p={4} borderRadius="md" boxShadow="md" bg="white">
+    <Box textAlign="center" py={8}>
+      <Heading as="h2" size="xl" mb={8} color="teal.600">
+        {t('materials.heading', 'Check out our materials')}
+      </Heading>
+      
+      <MotionBox p={4} borderRadius="md" boxShadow="md" bg="gray.50"> 
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={4}>
-          {posts.slice(0, 3).map((post, index) => (
+          {learningMaterials.slice(0, 3).map((material) => (
             <MotionBox 
-              key={index} 
-              onClick={() => openModal(post)} 
+              key={material.id} 
+              onClick={() => openModal(material)} 
               cursor="pointer" 
               borderWidth="1px" 
               borderRadius="md" 
               overflow="hidden" 
               boxShadow="lg" 
+              p={4}
               transition="transform 0.2s" 
               whileHover={{ scale: 1.05 }}
               role="button" 
-              aria-label={`Open ${post.title} details`}
+              aria-label={t('materials.openDetails', { title: material.title })}
             >
-              <Image 
-                src={post.image} 
-                alt={post.title} 
-                boxSize="100%" 
-                objectFit="cover" 
-                onLoad={() => setLoading(false)} 
-                onError={() => setLoading(false)}
-                fallbackSrc="https://via.placeholder.com/300x200?text=Image+Not+Available" // Fallback image
-              />
-              <Box mt={2} textAlign="center" fontWeight="bold" fontSize="lg">{post.title}</Box>
+              <Text fontWeight="bold" fontSize="lg" mb={2}>
+                {material.title}
+              </Text>
+              <Text fontSize="md">
+                {material.description}
+              </Text>
             </MotionBox>
           ))}
         </SimpleGrid>
@@ -56,27 +85,56 @@ const SliderModal = ({ posts }) => {
 
       <Modal isOpen={isOpen} onClose={closeModal} size="lg" isCentered>
         <ModalOverlay />
-        <ModalContent borderRadius="md" boxShadow="2xl">
-          <ModalHeader fontSize="xl" fontWeight="bold">{selectedPost?.title}</ModalHeader>
+        <ModalContent borderRadius="md" boxShadow="2xl" bg="gray.100"> {/* Changed background color */}
+          <ModalHeader fontSize="xl" fontWeight="bold">
+            {selectedMaterial?.title}
+          </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             {loading && <Spinner size="lg" color="teal.500" />}
-            <Image 
-              src={selectedPost?.image} 
-              alt={selectedPost?.title} 
-              borderRadius="md" 
-              fallbackSrc="https://via.placeholder.com/600x400?text=Image+Not+Available"
-              onLoad={() => setLoading(false)} 
-              onError={() => setLoading(false)}
-            />
-            <Text mt={4} fontSize="md">{selectedPost?.description}</Text>
-            <Button 
-              mt={4} 
-              colorScheme="teal" 
-              onClick={() => alert(`${t('modal.learnMore')} ${selectedPost?.title}`)} 
-            >
-              {t('modal.learnMore')} {/* Use translation here */}
-            </Button>
+
+            <SimpleGrid columns={1} spacing={4}>
+              {paginatedMaterials.map((material) => (
+                <Box 
+                  key={material.id} 
+                  p={4} 
+                  borderRadius="md" 
+                  boxShadow="md"
+                  bg={highlightedMaterialId === material.id ? "teal.100" : "gray.50"} // Updated background for highlighted and non-highlighted materials
+                >
+                  <Text fontWeight="bold" fontSize="lg">
+                    {material.title}
+                  </Text>
+                  <Text mt={2} fontSize="md">{material.description}</Text>
+                  <Button 
+                    mt={4} 
+                    colorScheme="teal" 
+                    as="a"
+                    href={material.fileUrl} 
+                    download
+                    aria-label={t('modal.downloadAria', { title: material.title })}
+                  >
+                    {t('modal.download', 'Download')}
+                  </Button>
+                </Box>
+              ))}
+            </SimpleGrid>
+
+            <HStack justifyContent="center" mt={4}>
+              <IconButton 
+                onClick={handlePrevious} 
+                icon={<ChevronLeftIcon />} 
+                isDisabled={currentPage === 0} 
+                aria-label={t('pagination.previous')}
+              />
+              <Text>{`${currentPage + 1} / ${totalPages}`}</Text>
+              <IconButton 
+                onClick={handleNext} 
+                icon={<ChevronRightIcon />} 
+                isDisabled={currentPage === totalPages - 1} 
+                aria-label={t('pagination.next')}
+              />
+            </HStack>
           </ModalBody>
         </ModalContent>
       </Modal>

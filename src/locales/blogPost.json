@@ -1,18 +1,38 @@
 [
-    {
-      "title": "Exploring English Culture",
-      "description": "Join us as we explore different aspects of English culture.",
-      "link": "https://example.com/exploring-english-culture"
-    },
-    {
-      "title": "Tips for Learning English",
-      "description": "Discover effective strategies for mastering English.",
-      "link": "https://example.com/tips-for-learning-english"
-    },
-    {
-      "title": "Benefits of Joining an English Club",
-      "description": "Learn about the advantages of being part of an English-speaking community.",
-      "link": "https://example.com/benefits-of-joining-english-club"
+  {
+    "title": "Exploring English Culture",
+    "description": "Join us as we explore different aspects of English culture, including traditions, festivals, and daily life.",
+    "link": "https://example.com/exploring-english-culture",
+    "image": "https://martinsenglish.org/wp-content/uploads/2017/09/british-culture-traditions-history.jpg?w=1920&h=768&crop=1", 
+    "details": {
+      "author": "Jane Doe",
+      "datePublished": "September 15, 2024",
+      "readingTime": "5 min",
+      "content": "This blog post delves into the rich tapestry of English culture, from the historic significance of tea time to the vibrant celebrations of the Notting Hill Carnival. We'll discuss how language, art, and customs intertwine to shape the identity of English society."
     }
-  ]
-  
+  },
+  {
+    "title": "Tips for Learning English",
+    "description": "Discover effective strategies for mastering English, whether you're a beginner or looking to refine your skills.",
+    "image": "https://livelearn.ca/wp-content/uploads/2023/02/Learning-English-fast-copy.jpg", 
+    "link": "https://example.com/tips-for-learning-english",
+    "details": {
+      "author": "John Smith",
+      "datePublished": "September 20, 2024",
+      "readingTime": "7 min",
+      "content": "This article offers practical tips for learning English, including immersive techniques, the importance of practice, and using technology effectively. You'll find suggestions for resources like language exchange partners and online courses to enhance your learning experience."
+    }
+  },
+  {
+    "title": "Benefits of Joining an English Club",
+    "description": "Learn about the advantages of being part of an English-speaking community, from improved language skills to social connections.",
+    "image": "https://scontent.fsgn2-10.fna.fbcdn.net/v/t39.30808-6/280287576_377599674330027_4084149001669873848_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_ohc=pira-XkMHQ8Q7kNvgHNP2TU&_nc_ht=scontent.fsgn2-10.fna&_nc_gid=AzSly7BVy0pnqFrh6ud0SxS&oh=00_AYCVQH9JKbWRDOQvpT6cgdQT9XBMN9iUxMBUQcw7VXsg4A&oe=67104456",
+    "link": "https://example.com/benefits-of-joining-english-club",
+    "details": {
+      "author": "Emily Johnson",
+      "datePublished": "September 25, 2024",
+      "readingTime": "6 min",
+      "content": "In this post, we explore how joining an English club can boost your confidence and fluency. You'll hear testimonials from current members about their experiences, the friendships they've formed, and how club activities have helped them improve their English in a supportive environment."
+    }
+  }
+]

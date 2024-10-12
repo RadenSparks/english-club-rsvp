@@ -103,7 +103,8 @@
   },
   "modal": {
     "learnMore": "Tìm Hiểu Thêm",
-    "imageNotAvailable": "Hình ảnh không có sẵn"
+    "imageNotAvailable": "Hình ảnh không có sẵn",
+    "download": "Tải xuống"
   },
   "modal_image_alt": "Hình ảnh toàn màn hình của sự kiện hoặc hoạt động đã chọn",
   "gallery_title": "Thư Viện Ảnh",
@@ -125,5 +126,8 @@
   "languageChangeSuccess": "Thay Đổi Ngôn Ngữ Thành Công",
   "languageChangeSuccessDescription": "Bạn đã chuyển sang {{language}}.",
   "languageChangeError": "Lỗi Thay Đổi Ngôn Ngữ",
-  "languageChangeErrorDescription": "Đã có lỗi xảy ra khi thay đổi ngôn ngữ."
+  "languageChangeErrorDescription": "Đã có lỗi xảy ra khi thay đổi ngôn ngữ.",
+  "materials": {
+    "heading": "Xem tài liệu của chúng tôi"
+  }
 }

@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import { motion } from 'framer-motion';
 import SliderModal from './components/SliderModal';
 import { useTranslation } from 'react-i18next';
+import BlogSection from './components/BlogSection'; // Import BlogSection
 
 const ImageGallery = React.lazy(() => import('./components/ImageGallery'));
 const ChatBot = React.lazy(() => import('./components/ChatBotEN'));
@@ -52,7 +53,7 @@ const ClubActivities = () => {
       <Stack spacing={8} direction={{ base: 'column', md: 'row' }} justify="center">
         <Box boxShadow="lg" p={4} borderRadius="lg" bg="white" maxW="sm">
           <Image 
-            src={require('./assets/img/hero-1.jpg')} // Updated relative path
+            src={require('./assets/img/hero-1.jpg')} 
             alt={t('clubActivities.weeklyConversation')}
             borderRadius="md" 
           />
@@ -62,7 +63,7 @@ const ClubActivities = () => {
         </Box>
         <Box boxShadow="lg" p={4} borderRadius="lg" bg="white" maxW="sm">
           <Image 
-            src={require('./assets/img/gallery2.jpg')} // Updated relative path
+            src={require('./assets/img/gallery2.jpg')} 
             alt={t('clubActivities.workshop')} 
             borderRadius="md" 
           />
@@ -72,7 +73,7 @@ const ClubActivities = () => {
         </Box>
         <Box boxShadow="lg" p={4} borderRadius="lg" bg="white" maxW="sm">
           <Image 
-            src={require('./assets/img/hero-3.jpg')} // Updated relative path
+            src={require('./assets/img/hero-3.jpg')} 
             alt={t('clubActivities.culturalEvent')} 
             borderRadius="md" 
           />
@@ -94,7 +95,6 @@ const ClubActivities = () => {
     </MotionBox>
   );
 };
-
 
 // Landing Page Component
 const LandingPage = () => {
@@ -135,7 +135,7 @@ const LandingPage = () => {
   const posts = [
     // Your existing posts data
   ];
-  
+
   return (
     <>
       <Helmet>
@@ -182,6 +182,9 @@ const LandingPage = () => {
               </Suspense>
             </ErrorBoundary>
           </MotionBox>
+          <MotionBox id="blogs" py={{ base: 12, md: 20 }} textAlign="center">
+            <BlogSection posts={posts} />
+          </MotionBox>
           <MotionBox id="contact" py={{ base: 12, md: 20 }} textAlign="center">
             <RSVPForm onRSVP={toggleChatBot} aria-label="RSVP Form" />
           </MotionBox>
@@ -195,7 +198,7 @@ const LandingPage = () => {
             textAlign="center" 
             position="fixed" 
             bottom="20px" 
-            left="20px"  // Updated position
+            left="20px"
             zIndex="1000"
           >
             <Button onClick={toggleChatBot} colorScheme="teal">
