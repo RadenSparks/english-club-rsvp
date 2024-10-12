@@ -51,36 +51,33 @@ const ClubActivities = () => {
         {t('clubActivities.heading')}
       </Heading>
       <Stack spacing={8} direction={{ base: 'column', md: 'row' }} justify="center">
-        <Box boxShadow="lg" p={4} borderRadius="lg" bg="white" maxW="sm">
-          <Image 
-            src={require('./assets/img/hero-1.jpg')} 
-            alt={t('clubActivities.weeklyConversation')}
-            borderRadius="md" 
-          />
-          <Text fontSize="lg" mt={4} color="gray.700">
-            {t('clubActivities.weeklyConversation')}
-          </Text>
-        </Box>
-        <Box boxShadow="lg" p={4} borderRadius="lg" bg="white" maxW="sm">
-          <Image 
-            src={require('./assets/img/gallery2.jpg')} 
-            alt={t('clubActivities.workshop')} 
-            borderRadius="md" 
-          />
-          <Text fontSize="lg" mt={4} color="gray.700">
-            {t('clubActivities.workshop')}
-          </Text>
-        </Box>
-        <Box boxShadow="lg" p={4} borderRadius="lg" bg="white" maxW="sm">
-          <Image 
-            src={require('./assets/img/hero-3.jpg')} 
-            alt={t('clubActivities.culturalEvent')} 
-            borderRadius="md" 
-          />
-          <Text fontSize="lg" mt={4} color="gray.700">
-            {t('clubActivities.culturalEvent')}
-          </Text>
-        </Box>
+        {[
+          {
+            src: require('./assets/img/hero-1.jpg'),
+            alt: t('clubActivities.weeklyConversation'),
+          },
+          {
+            src: require('./assets/img/gallery2.jpg'),
+            alt: t('clubActivities.workshop'),
+          },
+          {
+            src: require('./assets/img/hero-3.jpg'),
+            alt: t('clubActivities.culturalEvent'),
+          },
+        ].map((activity, index) => (
+          <Box boxShadow="lg" p={4} borderRadius="lg" bg="white" maxW="sm" key={index}>
+            <Image 
+              src={activity.src} 
+              alt={activity.alt}
+              borderRadius="md" 
+              maxW="100%"
+              height="auto"
+            />
+            <Text fontSize="lg" mt={4} color="gray.700">
+              {activity.alt}
+            </Text>
+          </Box>
+        ))}
       </Stack>
       <MotionBox whileHover={{ scale: 1.1 }} mt={6}>
         <Button 
@@ -114,11 +111,7 @@ const LandingPage = () => {
   };
 
   const handleScroll = () => {
-    if (window.scrollY > 200) {
-      setShowBackToTop(true);
-    } else {
-      setShowBackToTop(false);
-    }
+    setShowBackToTop(window.scrollY > 200);
   };
 
   const scrollToTop = () => {
@@ -214,7 +207,7 @@ const LandingPage = () => {
         
         {/* Back to Top Button */}
         {showBackToTop && (
-          <Box position="fixed" bottom="30px" right="30px" zIndex="1000">
+          <Box position="fixed" bottom={{ base: '20px', md: '30px' }} right={{ base: '10px', md: '30px' }} zIndex="1000">
             <Button onClick={scrollToTop} colorScheme="teal" borderRadius="full">
               ↑
             </Button>
