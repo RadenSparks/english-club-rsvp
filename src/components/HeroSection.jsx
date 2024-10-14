@@ -104,7 +104,7 @@ const HeroSection = () => {
             colorScheme="teal"
             size="lg"
             px={10}
-            onClick={() => scrollToSection('rsvp-form')}
+            onClick={() => scrollToSection('contact')} // Change to 'contact' to scroll to RSVP Form
             _hover={{ bg: 'teal.700' }}
             _focus={{ boxShadow: '0 0 0 3px rgba(66, 153, 225, 0.6)' }}
           >
